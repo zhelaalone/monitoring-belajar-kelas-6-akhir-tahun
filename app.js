@@ -248,9 +248,11 @@ function cekInputManual() {
    4. LOGIKA PROGRAM BELAJAR & KATEGORI
    ================================================================== */
 const DAFTAR_PELAJARAN = [
-    "Kimia", "Sosiologi", "Geografi", "Adyan", "Faroidh",
-    "Biologi", "Qahshasul Anbiya'", "Dinul Islam", "Berhitung",
-    "Tarikh Islam", "Imla", "Dictation", "Khat"
+    "Muthala`ah", "Mahfudzot 2", "Mantiq", "Reading", "Psikologi Pendidikan", 
+    "Tarjamah", "Fisika", "Nahwu", "Mahfudzot 1", "Shorf", 
+    "Balaghah", "Tarikh Adab Lughah", "Tauhid", "Tafsir", "Fiqh", 
+    "Ushul Fiqh", "Mushtolahul Hadits", "Tarbiyah", "Grammar", 
+    "Ilmu Negara", "Sejarah", "Bahasa Indonesia", "Kepondokmodernan"
 ];
 
 const JUMLAH_BAB = 10;
@@ -4384,7 +4386,7 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
        ================================================================== */
 
     // --- A. FITUR KALENDER & COUNTDOWN UJIAN ---
-    const TANGGAL_UJIAN = new Date(2026, 7, 23); // 23 Agustus 2026 (Bulan 7 = Agustus dalam JavaScript)
+    const TANGGAL_UJIAN = new Date(2026, 9, 28); // 23 Agustus 2026 (Bulan 7 = Agustus dalam JavaScript)
     const NAMA_BULAN = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
     const NAMA_HARI_PENDEK = ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"];
 
@@ -4392,7 +4394,7 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
         const elCountdown = document.getElementById('countdown-timer');
         if (!elCountdown) return;
 
-        const tanggalUjian = new Date(2026, 7, 23);
+        const tanggalUjian = new Date(2026, 9, 28);
         tanggalUjian.setHours(0, 0, 0, 0);
 
         const sekarang = new Date();
