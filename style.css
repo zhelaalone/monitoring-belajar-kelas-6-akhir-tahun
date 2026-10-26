@@ -873,3 +873,24 @@ tbody tr:hover {
 .activity-list li {
   padding: 4px 0;
 }
+
+/* ===== [FITUR BARU] NAVIGASI 3 DASHBOARD ===== */
+.dash-nav{display:flex;align-items:center;gap:0;flex:1;margin-left:10px;overflow-x:auto;white-space:nowrap}
+.dash-tab{background:none;border:none;border-left:2px solid #f0dcd6;padding:6px 20px;font-size:18px;font-weight:700;color:#b97603;cursor:pointer;transition:.2s;border-bottom:3px solid transparent}
+.dash-tab:first-child{border-left:none}
+.dash-tab:hover{color:#c9560f}
+.dash-tab.active{color:#c9560f;border-bottom-color:#c9560f}
+.dash-toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:15px}
+.dash-toolbar h3{margin:0}
+.dash-filters{display:flex;gap:8px;flex-wrap:wrap}
+.dash-sel{padding:8px 12px;border-radius:20px;border:1px solid #e0c8c5;background:#fff;color:#4a2525;outline:none;font-size:13px}
+.dash-sum{margin-bottom:20px}
+.dash-stat{padding:15px}
+.dash-box{margin-bottom:20px;padding:20px;flex:none;width:100%}
+.dash-box h4{color:#4a2525;border-bottom:2px solid #f9ecea;padding-bottom:10px;margin-bottom:12px}
+.dash-tbl{padding:0;box-shadow:none}
+.dash-empty{text-align:center;color:#777;padding:20px}
+.dash-bar{height:8px;background:#f9ecea;border-radius:8px;overflow:hidden;min-width:90px}
+.dash-bar span{display:block;height:100%;background:#8c2222}
+.dash-chip{display:inline-block;background:#f9ecea;color:#8c2222;border-radius:12px;padding:2px 8px;font-size:12px;margin:1px 3px 1px 0}
+@media (max-width:768px){.dash-tab{font-size:14px;padding:6px 12px}.dash-nav{margin-left:0}header{flex-wrap:wrap;gap:8px;padding:12px 15px}}
