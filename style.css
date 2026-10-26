@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 /* =========================================
    1. PENGATURAN DASAR (RESET & FONT)
    ========================================= */
@@ -12,7 +13,7 @@ body {
     display: flex;
     min-height: 100vh;
     /* Latar belakang krem hangat/merah muda pucat */
-    background-color: #fdf6f5; 
+    background-color: #faf5ec; 
     color: #b96d03; /* Warna teks cokelat gelap kemerahan */
 }
 
@@ -24,21 +25,21 @@ body {
     background-color: #ffffff; /* Sidebar putih bersih */
     display: flex;
     flex-direction: column;
-    box-shadow: 2px 0 15px rgba(140, 34, 34, 0.05); /* Bayangan kemerahan yang halus */
+    box-shadow: 2px 0 15px rgba(90, 60, 30, 0.05); /* Bayangan kemerahan yang halus */
     z-index: 10;
 }
 
 .logo {
     padding: 30px 20px;
     text-align: center;
-    border-bottom: 2px dashed #fdf6f5;
+    border-bottom: 2px dashed #faf5ec;
 }
 
 /* Logo Ijhad */
 .logo h2 {
     font-size: 24px;
     font-weight: 800;
-    color: #5c2d00; /* Warna marun khas */
+    color: #4a3326; /* Warna marun khas */
 }
 
 .nav-links {
@@ -65,7 +66,7 @@ body {
 /* Efek saat disorot dan saat menu aktif */
 .nav-links li a:hover, 
 .nav-links li a.active {
-    background-color: #c07445; 
+    background-color: #b5532a; 
     color: #fff7f3; 
 }
 
@@ -91,11 +92,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #fdf6f5;
+    border-bottom: 2px solid #faf5ec;
 }
 
 header h2 {
-    color: #c9560f;
+    color: #b5532a;
     font-weight: 700;
 }
 
@@ -104,7 +105,7 @@ header h2 {
     align-items: center;
     gap: 10px;
     font-weight: 600;
-    color: #c9560f;
+    color: #b5532a;
 }
 
 .user-info i {
@@ -134,7 +135,7 @@ header h2 {
 }
 
 h3 {
-    color: #c9560f;
+    color: #b5532a;
     margin-bottom: 20px;
     font-size: 22px;
 }
@@ -151,8 +152,8 @@ h3 {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 20px; 
-    box-shadow: 0 5px 15px rgba(140, 34, 34, 0.06);
-    border: 1px solid #f9ecea;
+    box-shadow: 0 5px 15px rgba(90, 60, 30, 0.06);
+    border: 1px solid #f2e7da;
 }
 
 @keyframes fadeIn {
@@ -180,11 +181,11 @@ h3 {
 
 /* Kotak Doa */
 .doa-container {
-    background-color: #f9ecea; 
+    background-color: #f2e7da; 
     padding: 20px 25px;
-    border-left: 6px solid #5c2d00; 
+    border-left: 6px solid #4a3326; 
     border-radius: 15px;
-    color: #5c2d00;   
+    color: #4a3326;   
 }
 
 .doa-container p {
@@ -201,7 +202,7 @@ h3 {
 /* Kartu Angka / Statistik */
 .card h4 {
     font-size: 16px;
-    color: #4a2525;
+    color: #3a2f2a;
     margin-bottom: 10px;
     opacity: 0.9;
 }
@@ -209,7 +210,7 @@ h3 {
 .card-value {
     font-size: 36px;
     font-weight: 800;
-    color: #c9560f;
+    color: #b5532a;
 }
 
 /* Area Bawah Dashboard (Aktivitas & Quotes) */
@@ -224,20 +225,20 @@ h3 {
     background-color: #ffffff;
     padding: 25px;
     border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(140, 34, 34, 0.06);
-    border: 1px solid #f9ecea;
-    color: #4a2525;    
+    box-shadow: 0 5px 15px rgba(90, 60, 30, 0.06);
+    border: 1px solid #f2e7da;
+    color: #3a2f2a;    
 }
 
 .activity-list {
     list-style: none;
     margin-top: 15px;
-    color: #c9560f;
+    color: #b5532a;
 }
 
 .activity-list li {
     padding: 15px 0;
-    border-bottom: 1px dashed #f9ecea;
+    border-bottom: 1px dashed #f2e7da;
     font-size: 15px;
 }
 
@@ -246,8 +247,8 @@ h3 {
 }
 
 .activity-list li strong {
-    color: #8c2222;
-    background-color: #f9ecea;
+    color: #b5532a;
+    background-color: #f2e7da;
     padding: 3px 10px;
     border-radius: 10px;
     font-size: 13px;
@@ -261,14 +262,14 @@ h3 {
     color: #ffffff; 
     padding: 25px;
     border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(140, 34, 34, 0.15);
+    box-shadow: 0 5px 15px rgba(90, 60, 30, 0.15);
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .quote-box h4 {
-    color: #f9ecea;
+    color: #f2e7da;
     margin-bottom: 15px;
 }
 
@@ -283,7 +284,7 @@ h3 {
     font-weight: 700;
     text-align: right;
     display: block;
-    color: #f9ecea;
+    color: #f2e7da;
 }
 
 /* =========================================
@@ -297,7 +298,7 @@ h3 {
 }
 
 .btn-add {
-    background-color: #8c2222;
+    background-color: #b5532a;
     color: white;
     padding: 10px 20px;
     border-radius: 20px;
@@ -308,14 +309,14 @@ h3 {
 }
 
 .btn-add:hover {
-    background-color: #5e1717;
+    background-color: #8f3f1e;
 }
 
 .table-container {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(140, 34, 34, 0.05);
+    box-shadow: 0 5px 15px rgba(90, 60, 30, 0.05);
     overflow-x: auto; 
 }
 
@@ -327,23 +328,23 @@ table {
 th {
     text-align: left;
     padding: 15px;
-    color: #8c2222;
-    border-bottom: 2px solid #f9ecea;
+    color: #b5532a;
+    border-bottom: 2px solid #f2e7da;
 }
 
 td {
     padding: 15px;
-    border-bottom: 1px solid #f9ecea;
-    color: #4a2525;
+    border-bottom: 1px solid #f2e7da;
+    color: #3a2f2a;
 }
 
 tbody tr:hover {
-    background-color: #fdf6f5;
+    background-color: #faf5ec;
 }
 
 .btn-detail {
-    background-color: #f9ecea;
-    color: #8c2222;
+    background-color: #f2e7da;
+    color: #b5532a;
     border: none;
     padding: 6px 15px;
     border-radius: 10px;
@@ -353,7 +354,7 @@ tbody tr:hover {
 }
 
 .btn-detail:hover {
-    background-color: #8c2222;
+    background-color: #b5532a;
     color: white;
 }
 
@@ -367,7 +368,7 @@ tbody tr:hover {
 .btn-back {
     background: none;
     border: none;
-    color: #8c2222;
+    color: #b5532a;
     font-weight: 600;
     cursor: pointer;
     margin-bottom: 10px;
@@ -380,7 +381,7 @@ tbody tr:hover {
 
 .profile-img {
     font-size: 80px;
-    color: #8c2222;
+    color: #b5532a;
     margin-bottom: 15px;
 }
 
@@ -389,7 +390,7 @@ tbody tr:hover {
     display: flex;
     gap: 5px;
     margin-bottom: 20px;
-    border-bottom: 2px solid #f9ecea;
+    border-bottom: 2px solid #f2e7da;
     padding-bottom: 10px;
 }
 
@@ -399,12 +400,12 @@ tbody tr:hover {
     padding: 8px 15px;
     cursor: pointer;
     font-weight: 600;
-    color: #8c2222;
+    color: #b5532a;
     border-radius: 10px 10px 0 0;
 }
 
 .tab-btn.active {
-    background-color: #8c2222;
+    background-color: #b5532a;
     color: white;
 }
 
@@ -432,7 +433,7 @@ tbody tr:hover {
 }
 
 .program-card {
-    background: #f9ecea;
+    background: #f2e7da;
     padding: 20px;
     border-radius: 15px;
     text-align: center;
@@ -442,7 +443,7 @@ tbody tr:hover {
 }
 
 .program-card:hover {
-    background: #8c2222;
+    background: #b5532a;
     color: white;
 }
 
@@ -460,25 +461,25 @@ tbody tr:hover {
 
 .subject-card {
     background-color: #ffffff;
-    border: 2px solid #f9ecea;
+    border: 2px solid #f2e7da;
     padding: 15px;
     text-align: center;
     border-radius: 30px;
     cursor: pointer;
     font-weight: 600;
-    color: #8c2222;
+    color: #b5532a;
     transition: 0.3s ease;
 }
 
 .subject-card:hover {
-    border-color: #8c2222;
-    background-color: #fdf6f5;
+    border-color: #b5532a;
+    background-color: #faf5ec;
 }
 
 .subject-card.selected {
-    background-color: #8c2222;
+    background-color: #b5532a;
     color: white;
-    border-color: #8c2222;
+    border-color: #b5532a;
 }
 
 .subject-card.subbab-item {
@@ -492,7 +493,7 @@ tbody tr:hover {
 .subbab-checkbox {
     width: 18px;
     height: 18px;
-    accent-color: #8c2222; 
+    accent-color: #b5532a; 
     cursor: pointer;
     flex-shrink: 0;
 }
@@ -523,8 +524,8 @@ tbody tr:hover {
     background-color: #ffffff;
     padding: 35px 30px;
     border-radius: 20px;
-    box-shadow: 0 5px 20px rgba(140, 34, 34, 0.08);
-    border: 1px solid #f9ecea;
+    box-shadow: 0 5px 20px rgba(90, 60, 30, 0.08);
+    border: 1px solid #f2e7da;
     width: 100%;
     max-width: 480px; /* Lebar ideal kartu presensi */
     margin: 0 auto;
@@ -536,7 +537,7 @@ tbody tr:hover {
 
 /* Judul & Teks Penjelas */
 #scan-barcode h3 {
-    color: #c9560f;
+    color: #b5532a;
     font-size: 22px;
     font-weight: 700;
     margin-bottom: 6px;
@@ -554,10 +555,10 @@ tbody tr:hover {
 /* Area Kamera / Scanner HTML5 */
 #reader {
     width: 100% !important;
-    border: 2px dashed #f9ecea !important;
+    border: 2px dashed #f2e7da !important;
     border-radius: 15px !important;
     overflow: hidden !important;
-    background-color: #fdf6f5 !important;
+    background-color: #faf5ec !important;
     margin: 10px 0 20px 0 !important;
     padding: 10px !important;
     box-sizing: border-box !important;
@@ -573,9 +574,9 @@ tbody tr:hover {
 #reader button {
     padding: 8px 14px;
     border-radius: 20px;
-    border: 1px solid #f9ecea;
+    border: 1px solid #f2e7da;
     background-color: #ffffff;
-    color: #8c2222;
+    color: #b5532a;
     font-weight: 600;
     margin-top: 8px;
     cursor: pointer;
@@ -583,16 +584,16 @@ tbody tr:hover {
 }
 
 #reader button:hover {
-    background-color: #8c2222;
+    background-color: #b5532a;
     color: #ffffff;
 }
 
 /* Box Input File (Upload Gambar Barcode) */
 #scan-barcode div[style*="border: 2px dashed"] {
     width: 100%;
-    border: 2px dashed #f9ecea !important;
+    border: 2px dashed #f2e7da !important;
     border-radius: 15px !important;
-    background-color: #fdf6f5 !important;
+    background-color: #faf5ec !important;
     padding: 15px !important;
     margin: 10px 0 20px 0 !important;
     text-align: center !important;
@@ -600,7 +601,7 @@ tbody tr:hover {
 }
 
 #scan-barcode label[for="qr-input-file"] {
-    color: #8c2222 !important;
+    color: #b5532a !important;
     font-size: 14px;
     margin-bottom: 8px;
 }
@@ -612,7 +613,7 @@ tbody tr:hover {
 }
 
 #scan-barcode label {
-    color: #8c2222;
+    color: #b5532a;
     font-weight: 600;
     font-size: 14px;
 }
@@ -624,10 +625,10 @@ tbody tr:hover {
     font-weight: 700;
     text-align: center;
     letter-spacing: 1px;
-    border: 1px solid #f9ecea;
+    border: 1px solid #f2e7da;
     border-radius: 15px;
-    background-color: #fdf6f5;
-    color: #4a2525;
+    background-color: #faf5ec;
+    color: #3a2f2a;
     box-sizing: border-box;
     margin-top: 5px;
     transition: all 0.3s ease;
@@ -635,13 +636,13 @@ tbody tr:hover {
 
 #scan-barcode input[type="text"]#id_siswa:focus {
     outline: none;
-    border-color: #c07445;
+    border-color: #b5532a;
     background-color: #ffffff;
 }
 
 /* Tombol Cek / Simpan Data Barcode */
 #scan-barcode button[onclick="cekInputManual()"] {
-    background-color: #8c2222 !important;
+    background-color: #b5532a !important;
     color: #ffffff !important;
     padding: 12px 20px !important;
     font-size: 15px !important;
@@ -652,11 +653,11 @@ tbody tr:hover {
     width: 100% !important;
     margin-top: 15px !important;
     transition: all 0.3s ease !important;
-    box-shadow: 0 4px 10px rgba(140, 34, 34, 0.15);
+    box-shadow: 0 4px 10px rgba(90, 60, 30, 0.15);
 }
 
 #scan-barcode button[onclick="cekInputManual()"]:hover {
-    background-color: #5e1717 !important;
+    background-color: #8f3f1e !important;
 }
 
 /* =========================================
@@ -878,19 +879,139 @@ tbody tr:hover {
 .dash-nav{display:flex;align-items:center;gap:0;flex:1;margin-left:10px;overflow-x:auto;white-space:nowrap}
 .dash-tab{background:none;border:none;border-left:2px solid #f0dcd6;padding:6px 20px;font-size:18px;font-weight:700;color:#b97603;cursor:pointer;transition:.2s;border-bottom:3px solid transparent}
 .dash-tab:first-child{border-left:none}
-.dash-tab:hover{color:#c9560f}
-.dash-tab.active{color:#c9560f;border-bottom-color:#c9560f}
+.dash-tab:hover{color:#b5532a}
+.dash-tab.active{color:#b5532a;border-bottom-color:#b5532a}
 .dash-toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:15px}
 .dash-toolbar h3{margin:0}
 .dash-filters{display:flex;gap:8px;flex-wrap:wrap}
-.dash-sel{padding:8px 12px;border-radius:20px;border:1px solid #e0c8c5;background:#fff;color:#4a2525;outline:none;font-size:13px}
+.dash-sel{padding:8px 12px;border-radius:20px;border:1px solid #e2d3c2;background:#fff;color:#3a2f2a;outline:none;font-size:13px}
 .dash-sum{margin-bottom:20px}
 .dash-stat{padding:15px}
 .dash-box{margin-bottom:20px;padding:20px;flex:none;width:100%}
-.dash-box h4{color:#4a2525;border-bottom:2px solid #f9ecea;padding-bottom:10px;margin-bottom:12px}
+.dash-box h4{color:#3a2f2a;border-bottom:2px solid #f2e7da;padding-bottom:10px;margin-bottom:12px}
 .dash-tbl{padding:0;box-shadow:none}
 .dash-empty{text-align:center;color:#777;padding:20px}
-.dash-bar{height:8px;background:#f9ecea;border-radius:8px;overflow:hidden;min-width:90px}
-.dash-bar span{display:block;height:100%;background:#8c2222}
-.dash-chip{display:inline-block;background:#f9ecea;color:#8c2222;border-radius:12px;padding:2px 8px;font-size:12px;margin:1px 3px 1px 0}
+.dash-bar{height:8px;background:#f2e7da;border-radius:8px;overflow:hidden;min-width:90px}
+.dash-bar span{display:block;height:100%;background:#b5532a}
+.dash-chip{display:inline-block;background:#f2e7da;color:#b5532a;border-radius:12px;padding:2px 8px;font-size:12px;margin:1px 3px 1px 0}
 @media (max-width:768px){.dash-tab{font-size:14px;padding:6px 12px}.dash-nav{margin-left:0}header{flex-wrap:wrap;gap:8px;padding:12px 15px}}
+
+
+/* =========================================================
+   [REDESAIN VISUAL v2] Soft UI - Ivory & Terracotta
+   Hanya presentasi (warna, tipografi, jarak, radius, bayangan)
+   ========================================================= */
+:root{--bg:#f6f1e9;--surface:#fff;--beige:#f1e8dc;--line:#ece2d3;--accent:#b5532a;--accent-dark:#8f3f1e;--accent-soft:#fbeadf;--ink:#2f2723;--muted:#8a7a6c;--r-xl:28px;--r-lg:20px;--r-md:14px;--shadow:0 1px 2px rgba(60,40,20,.04),0 8px 24px rgba(60,40,20,.05)}
+*{font-family:'Inter','Segoe UI',system-ui,sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;font-size:14.5px}
+::selection{background:var(--accent-soft);color:var(--accent-dark)}
+::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#dccfbd;border-radius:10px;border:2px solid var(--bg)}
+h3{color:var(--ink);font-weight:700;letter-spacing:-.02em;font-size:20px}
+h4{color:var(--ink);font-weight:600}
+
+/* Sidebar melayang */
+.sidebar{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--r-xl)}
+@media (min-width:769px){.sidebar{margin:16px 0 16px 16px;position:sticky;top:16px;align-self:flex-start;height:calc(100vh - 32px);overflow-y:auto}}
+.logo{border-bottom:1px solid var(--line);padding:26px 20px}
+.logo h2{color:var(--ink);font-size:22px;letter-spacing:-.03em}.logo h2 i{color:var(--accent)}
+.nav-links{padding:18px 14px}.nav-links li{margin-bottom:4px}
+.nav-links li a{color:var(--muted);font-weight:500;font-size:14px;border-radius:14px;padding:11px 16px;transition:background .2s,color .2s}
+.nav-links li a i{color:inherit;opacity:.85}
+.nav-links li a:hover{background:var(--beige);color:var(--ink)}
+.nav-links li a.active{background:var(--accent);color:#fff;font-weight:600;box-shadow:0 8px 18px rgba(181,83,42,.28)}
+
+/* Header transparan + segmented control */
+.main-content{padding:0 8px}
+header{background:transparent;border:none;padding:22px 24px 6px;gap:16px;flex-wrap:wrap}
+header h2{color:var(--ink);font-size:24px;font-weight:800;letter-spacing:-.03em}
+.dash-nav{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px;gap:2px;flex:none;width:max-content;max-width:100%;margin-left:0;box-shadow:var(--shadow)}
+.dash-tab,.dash-tab:first-child{border:none;border-radius:999px;padding:9px 20px;font-size:14px;font-weight:600;color:var(--muted);background:transparent}
+.dash-tab:hover{color:var(--ink);background:var(--beige)}
+.dash-tab.active{background:var(--accent);color:#fff;box-shadow:0 6px 14px rgba(181,83,42,.3)}
+.user-info{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 6px 5px 16px;color:var(--ink);font-weight:600;font-size:14px;box-shadow:var(--shadow)}
+.user-info i{color:var(--accent);font-size:26px}
+.user-info button{border-radius:999px!important;box-shadow:none!important;padding:8px 16px!important}
+.content-container{padding:20px 24px 40px}
+
+/* Kartu */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:22px}
+.card h4{color:var(--muted);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.card-value{color:var(--accent);font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.cards-container{gap:18px}
+.welcome-section{background:radial-gradient(circle at 92% 20%,rgba(181,83,42,.14) 0,transparent 38%),radial-gradient(circle at 80% 90%,rgba(181,83,42,.08) 0,transparent 30%),linear-gradient(135deg,#fdf6ec,#f6e0cc);border:1px solid var(--line);border-radius:var(--r-xl);padding:32px 36px}
+.welcome-section h3{font-size:28px;font-weight:800;color:var(--ink)}
+.greeting{color:var(--muted);opacity:1}
+.doa-container{background:rgba(255,255,255,.72);border-left:4px solid var(--accent);border-radius:var(--r-md);color:var(--ink);backdrop-filter:blur(6px)}
+.quote-box{background:linear-gradient(150deg,#c2693d,#9a4320);color:#fff;border-radius:var(--r-lg);box-shadow:0 14px 30px rgba(143,63,30,.25)}
+.quote-box h4,.quote-box p,.quote-box small{color:#fff}
+.activity-box{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow)}
+.activity-list li{border-bottom:1px solid var(--beige);padding:10px 0}.activity-list li:last-child{border:none}
+.activity-list li strong:first-child{background:var(--accent-soft);color:var(--accent-dark);border-radius:8px;padding:2px 8px}
+
+/* Tabel */
+.table-container{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:8px 12px}
+th{background:transparent;color:var(--muted);font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:14px;border-bottom:1px solid var(--line)}
+td{border-bottom:1px solid var(--beige);padding:14px;color:var(--ink)}
+tbody tr:last-child td{border-bottom:none}tbody tr:hover{background:#fbf8f2}
+
+/* Tombol */
+button{transition:background .2s,transform .15s,box-shadow .2s}
+button:not(:disabled):active{transform:scale(.98)}
+.btn-add{background:var(--accent);border-radius:999px;font-weight:600;box-shadow:0 8px 18px rgba(181,83,42,.25)}.btn-add:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn-detail{background:var(--accent-soft);color:var(--accent);border-radius:999px}.btn-detail:hover{background:var(--accent);color:#fff}
+.btn-back{color:var(--accent);font-weight:600}
+.tabs-menu{border-bottom:1px solid var(--line);gap:6px}
+.tab-btn{color:var(--muted);border-radius:999px;padding:9px 18px;font-weight:600}.tab-btn:hover{background:var(--beige)}
+.tab-btn.active{background:var(--accent);color:#fff}
+.program-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);color:var(--ink);box-shadow:var(--shadow)}
+.program-card i{color:var(--accent)}.program-card:hover{background:var(--accent);color:#fff;transform:translateY(-3px)}.program-card:hover i{color:#fff}
+.subject-card{border:1px solid var(--line);color:var(--ink);border-radius:var(--r-md);font-weight:500}
+.subject-card:hover{border-color:var(--accent);background:var(--accent-soft)}
+.subject-card.selected{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* Formulir */
+input,select,textarea{color:var(--ink);border-radius:12px}
+input:not([type=checkbox]):not([type=radio]),select,textarea{background-color:#fdfbf7}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)!important;box-shadow:0 0 0 4px rgba(181,83,42,.14)}
+input::placeholder{color:#b3a496}
+
+/* Modal & login */
+#login-screen{background:radial-gradient(circle at 20% 15%,#f9dfc9,transparent 45%),linear-gradient(135deg,#faf5ec,#f1dcc8)!important}
+#login-screen>div,[id^="modal-"]>div{border-radius:var(--r-xl)!important;border:1px solid var(--line);box-shadow:0 30px 70px rgba(60,40,20,.2)!important}
+[id^="modal-"]{backdrop-filter:blur(3px)}
+
+/* Dashboard Angkatan / Kelas */
+.dash-sel{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:9px 16px}
+.dash-box h4{text-transform:none;letter-spacing:0;font-size:16px;color:var(--ink);border-bottom:1px solid var(--beige)}
+.dash-bar{background:var(--beige)}.dash-bar span{background:var(--accent)}
+.dash-chip{background:var(--accent-soft);color:var(--accent-dark)}
+.dash-tbl{border:none;box-shadow:none;padding:0}
+.table-container,.dash-tbl{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* Responsif */
+@media (max-width:1024px){.main-content{margin-left:0}}
+@media (max-width:768px){
+ .sidebar{margin:10px;border-radius:var(--r-lg)}
+ .main-content{padding:0 4px}header{padding:12px 12px 4px}
+ .content-container{padding:14px 12px 30px}
+ .welcome-section{padding:22px;border-radius:var(--r-lg)}.welcome-section h3{font-size:22px}
+ .dash-tab{padding:8px 12px;font-size:13px}.dash-nav{overflow-x:auto}
+ .user-info{padding-left:12px}
+}
+
+/* ===== [FITUR BARU] Target Jumbo ===== */
+.jb-tabs{margin-bottom:20px}
+.jb-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.jb-grid label,.jb-kelas label{font-weight:600;font-size:13px;color:var(--ink);display:block}
+.jb-grid input,.jb-grid select{width:100%;margin-top:5px;padding:10px 12px;border:1px solid var(--line);font-size:14px}
+.jb-kelas{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:6px 0}
+.jb-cb-all,.jb-cb-k{background:var(--accent-soft);padding:6px 12px;border-radius:999px;cursor:pointer;font-weight:500!important}
+.jb-cb-all{background:var(--accent);color:#fff}
+.jb-ringkas{margin:10px 0 16px;color:var(--muted);font-size:13px}
+.jb-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.jb-stat{display:flex;flex-wrap:wrap;gap:6px 14px;margin:10px 0;font-size:13px;color:var(--muted)}.jb-stat b{color:var(--ink)}
+.jb-badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700}
+.jb-Selesai{background:#e6f4ea;color:#1e8e3e}.jb-DalamProses{background:#fff3e0;color:#e65100}
+.jb-Terlambat{background:#fbe9e7;color:#c0392b}.jb-BelumDimulai,.jb-Dibatalkan{background:#eee;color:#666}
+@media (max-width:768px){.jb-grid{grid-template-columns:1fr}}
