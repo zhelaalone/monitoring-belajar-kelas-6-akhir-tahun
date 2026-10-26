@@ -1,0 +1,180 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "aksesGuru": {
+      ".read": "auth != null && root.child('aksesGuru').child(auth.uid).child('admin').val() === true",
+      ".write": "auth != null && root.child('aksesGuru').child(auth.uid).child('admin').val() === true",
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('aksesGuru').child(auth.uid).child('admin').val() === true)",
+        ".write": "auth != null && root.child('aksesGuru').child(auth.uid).child('admin').val() === true",
+        "admin": {
+          ".validate": "newData.isBoolean()"
+        },
+        "guruNama": {
+          ".validate": "newData.isString() && newData.val().length <= 160"
+        },
+        "kelas": {
+          "$kelas": {
+            ".validate": "newData.val() === true"
+          }
+        },
+        "$other": {
+          ".validate": true
+        }
+      }
+    },
+
+    "loginGuru": {
+      ".read": true,
+      ".write": "auth != null && root.child('aksesGuru').child(auth.uid).child('admin').val() === true",
+      "$akunId": {
+        "nama": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 160"
+        },
+        "email": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 254"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    },
+
+    "databaseSiswa": {
+      ".read": "auth != null && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || (query.orderByChild === 'kelas' && root.child('aksesGuru').child(auth.uid).child('kelas').child(query.equalTo).val() === true))",
+      ".write": "auth != null && root.child('aksesGuru').child(auth.uid).child('admin').val() === true",
+      ".indexOn": ["kelas"],
+      "$nis": {
+        ".read": "auth != null && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || (data.child('kelas').isString() && root.child('aksesGuru').child(auth.uid).child('kelas').child(data.child('kelas').val()).val() === true))",
+        ".write": "auth != null && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || (data.exists() && newData.exists() && data.child('kelas').isString() && newData.child('kelas').isString() && root.child('aksesGuru').child(auth.uid).child('kelas').child(data.child('kelas').val()).val() === true && root.child('aksesGuru').child(auth.uid).child('kelas').child(newData.child('kelas').val()).val() === true))",
+        ".validate": "newData.hasChildren(['nama', 'kelas'])",
+        "nama": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 200"
+        },
+        "kelas": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 40"
+        },
+        "$other": {
+          ".validate": true
+        }
+      }
+    },
+
+    "recentActivityLog": {
+      ".read": "auth != null && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || (query.orderByChild === 'kelas' && root.child('aksesGuru').child(auth.uid).child('kelas').child(query.equalTo).val() === true))",
+      ".write": "auth != null && root.child('aksesGuru').child(auth.uid).child('admin').val() === true",
+      ".indexOn": ["kelas"],
+      "$logId": {
+        ".read": "auth != null && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || (data.child('kelas').isString() && root.child('aksesGuru').child(auth.uid).child('kelas').child(data.child('kelas').val()).val() === true))",
+        ".write": "auth != null && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || (newData.exists() && newData.child('kelas').isString() && root.child('aksesGuru').child(auth.uid).child('kelas').child(newData.child('kelas').val()).val() === true && (!data.exists() || (data.child('kelas').isString() && root.child('aksesGuru').child(auth.uid).child('kelas').child(data.child('kelas').val()).val() === true))))",
+        "kelas": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 40"
+        },
+        "$other": {
+          ".validate": true
+        }
+      }
+    },
+
+    "riwayatAbsensi": {
+      ".read": "auth != null && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || (query.orderByChild === 'kelas' && root.child('aksesGuru').child(auth.uid).child('kelas').child(query.equalTo).val() === true))",
+      ".write": "auth != null && root.child('aksesGuru').child(auth.uid).child('admin').val() === true",
+      ".indexOn": ["kelas"],
+      "$absenId": {
+        ".read": "auth != null && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || (data.child('kelas').isString() && root.child('aksesGuru').child(auth.uid).child('kelas').child(data.child('kelas').val()).val() === true))",
+        ".write": "auth != null && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || (newData.exists() && newData.child('kelas').isString() && root.child('aksesGuru').child(auth.uid).child('kelas').child(newData.child('kelas').val()).val() === true && (!data.exists() || (data.child('kelas').isString() && root.child('aksesGuru').child(auth.uid).child('kelas').child(data.child('kelas').val()).val() === true))))",
+        "kelas": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 40"
+        },
+        "$other": {
+          ".validate": true
+        }
+      }
+    },
+
+    "riwayatAktivitasGuru": {
+      ".read": "auth != null && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || (query.orderByChild === 'uid' && query.equalTo === auth.uid))",
+      ".write": "auth != null && root.child('aksesGuru').child(auth.uid).child('admin').val() === true",
+      ".indexOn": ["uid"],
+      "$aktivitasId": {
+        ".read": "auth != null && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || data.child('uid').val() === auth.uid)",
+        ".write": "auth != null && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || (newData.exists() && newData.child('uid').val() === auth.uid && (!data.exists() || data.child('uid').val() === auth.uid)))",
+        "uid": {
+          ".validate": "newData.isString() && newData.val().length > 0"
+        },
+        "$other": {
+          ".validate": true
+        }
+      }
+    },
+
+    "daftarGuru": {
+      ".read": "auth != null && root.child('aksesGuru').child(auth.uid).child('admin').val() === true",
+      ".write": "auth != null && root.child('aksesGuru').child(auth.uid).child('admin').val() === true"
+    },
+
+    "targetJumbo": {
+      ".read": "auth != null && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || (query.orderByChild === 'dibuatOlehUid' && query.equalTo === auth.uid))",
+      ".write": "auth != null && root.child('aksesGuru').child(auth.uid).child('admin').val() === true",
+      ".indexOn": ["dibuatOlehUid"],
+      "$targetId": {
+        ".read": "auth != null && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || data.child('dibuatOlehUid').val() === auth.uid || root.child('targetJumboAkses').child(auth.uid).child($targetId).val() === true)",
+        ".write": "auth != null && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || (!data.exists() && newData.hasChildren(['id', 'nama', 'jumlah', 'mulai', 'deadline', 'kelas', 'penerima', 'dibuatOlehUid', 'status']) && newData.child('dibuatOlehUid').val() === auth.uid && newData.child('status').val() === 'aktif'))",
+        "id": {
+          ".validate": "newData.isString() && newData.val() === $targetId"
+        },
+        "nama": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 200"
+        },
+        "jumlah": {
+          ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() % 1 === 0"
+        },
+        "status": {
+          ".validate": "newData.val() === 'aktif' || newData.val() === 'dibatalkan'"
+        },
+        "dibuatOlehUid": {
+          ".validate": "newData.isString() && newData.val().length > 0 && (!data.exists() || newData.val() === data.val())"
+        },
+        "kelas": {
+          ".validate": "newData.hasChildren()",
+          "$kelas": {
+            ".validate": "newData.val() === true && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || root.child('aksesGuru').child(auth.uid).child('kelas').child($kelas).val() === true)"
+          }
+        },
+        "penerima": {
+          ".validate": "newData.hasChildren()",
+          "$nis": {
+            ".validate": "newData.val() === true && root.child('databaseSiswa').child($nis).exists() && root.child('databaseSiswa').child($nis).child('kelas').isString() && newData.parent().parent().child('kelas').child(root.child('databaseSiswa').child($nis).child('kelas').val()).val() === true && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || root.child('aksesGuru').child(auth.uid).child('kelas').child(root.child('databaseSiswa').child($nis).child('kelas').val()).val() === true)"
+          }
+        },
+        "baseline": {
+          "$nis": {
+            ".validate": "newData.isNumber() && newData.val() >= 0"
+          }
+        },
+        "selesai": {
+          "$nis": {
+            ".write": "auth != null && (root.child('aksesGuru').child(auth.uid).child('admin').val() === true || (root.child('targetJumbo').child($targetId).child('dibuatOlehUid').val() === auth.uid && root.child('targetJumbo').child($targetId).child('penerima').child($nis).val() === true))",
+            ".validate": "newData.isNumber() && newData.val() > 0"
+          }
+        },
+        "$other": {
+          ".validate": true
+        }
+      }
+    },
+
+    "targetJumboAkses": {
+      ".read": "auth != null && root.child('aksesGuru').child(auth.uid).child('admin').val() === true",
+      ".write": "auth != null && root.child('aksesGuru').child(auth.uid).child('admin').val() === true",
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('aksesGuru').child(auth.uid).child('admin').val() === true)",
+        "$targetId": {
+          ".validate": "newData.val() === true && root.child('targetJumbo').child($targetId).exists()"
+        }
+      }
+    }
+  }
+}
