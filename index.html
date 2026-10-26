@@ -18,6 +18,7 @@
          dengan <script> biasa (tidak perlu import/module/build tool).
          ============================================================ -->
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
     <script>
         const firebaseConfig = {
@@ -30,6 +31,7 @@
             appId: "1:1098008064846:web:4acfbe2bd9a8784c2a641f"
         };
         firebase.initializeApp(firebaseConfig);
+        const firebaseAuth = firebase.auth();
         const firebaseDb = firebase.database(); // dipakai oleh script.js untuk baca/tulis data
     </script>
     <!-- ========== [AKHIR FITUR BARU: FIREBASE SDK & CONFIG] ========== -->
@@ -54,11 +56,11 @@
 
         <input type="password" id="input-password-web" placeholder="Masukkan Password..." style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #e2d3c2; border-radius: 5px; box-sizing: border-box; outline: none; text-align: center; font-size: 16px;">
         
-        <button onclick="cekPasswordWeb()" style="width: 100%; padding: 12px; background: #b5532a; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px; transition: background 0.3s;" onmouseover="this.style.background='#8f3f1e'" onmouseout="this.style.background='#b5532a'">
+        <button id="tombol-login-web" onclick="cekPasswordWeb()" style="width: 100%; padding: 12px; background: #b5532a; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px; transition: background 0.3s;" onmouseover="this.style.background='#8f3f1e'" onmouseout="this.style.background='#b5532a'">
             Buka Aplikasi
         </button>
         
-        <p id="pesan-error-login" style="color: red; font-size: 13px; margin-top: 15px; display: none;">Password salah! Silakan coba lagi.</p>
+        <p id="pesan-error-login" style="color: red; font-size: 13px; margin-top: 15px; display: none;">Nama atau password tidak sesuai. Silakan coba lagi.</p>
     </div>
 </div>
 
@@ -1339,15 +1341,6 @@
     </div>
 </div>
         </div>
-
-<!-- ============================================================
-     [FITUR BARU] MODAL: REKAP SETORAN HARIAN KELAS
-     ============================================================ -->
-<div id="modal-rekap-harian" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
-    <div class="modal-content" style="background: white; padding: 25px; border-radius: 10px; max-width: 850px; width: 90%; max-height: 85vh; position: relative; display: flex; flex-direction: column;">
-        <!-- Isi modal rekap harian ... -->
-    </div>
-</div>
 
 <!-- ============================================================
      [FITUR BARU] MODAL: DETAIL AKTIVITAS GURU
