@@ -25,12 +25,12 @@ function filterNamaGuruLogin() {
                 const div = document.createElement("div");
                 div.style.padding = "10px 15px";
                 div.style.cursor = "pointer";
-                div.style.borderBottom = "1px solid #f9ecea";
-                div.style.color = "#4a2525";
+                div.style.borderBottom = "1px solid #f2e7da";
+                div.style.color = "#3a2f2a";
                 div.style.fontWeight = "bold";
                 div.innerHTML = guru.nama;
 
-                div.onmouseover = function () { this.style.background = "#fdf6f5"; };
+                div.onmouseover = function () { this.style.background = "#faf5ec"; };
                 div.onmouseout = function () { this.style.background = "white"; };
 
                 // PERBAIKAN: Gunakan onmousedown agar nama 100% masuk saat diklik
@@ -51,12 +51,12 @@ function filterNamaGuruLogin() {
         const divAdmin = document.createElement("div");
         divAdmin.style.padding = "10px 15px";
         divAdmin.style.cursor = "pointer";
-        divAdmin.style.borderBottom = "1px solid #f9ecea";
-        divAdmin.style.color = "#8c2222";
+        divAdmin.style.borderBottom = "1px solid #f2e7da";
+        divAdmin.style.color = "#b5532a";
         divAdmin.style.fontWeight = "bold";
         divAdmin.innerHTML = "⭐ Admin Aplikasi";
 
-        divAdmin.onmouseover = function () { this.style.background = "#fdf6f5"; };
+        divAdmin.onmouseover = function () { this.style.background = "#faf5ec"; };
         divAdmin.onmouseout = function () { this.style.background = "white"; };
 
         divAdmin.onmousedown = function (e) {
@@ -9473,16 +9473,16 @@ function renderDaftarBab(kategori, namaPelajaran) {
     if (kategori === "bahas soal") {
         // 1. Render Form Input Tahun & Jumlah Soal
         const formDiv = document.createElement("div");
-        formDiv.style.cssText = "background: #fdf6f5; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #f9ecea;";
+        formDiv.style.cssText = "background: #faf5ec; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #f2e7da;";
         formDiv.innerHTML = `
-            <h4 style="margin: 0 0 10px 0; color: #8c2222; font-size: 14px;"><i class="fas fa-plus-circle"></i> Tambah Tahun & Jumlah Soal</h4>
+            <h4 style="margin: 0 0 10px 0; color: #b5532a; font-size: 14px;"><i class="fas fa-plus-circle"></i> Tambah Tahun & Jumlah Soal</h4>
             <div style="margin-bottom: 8px;">
                 <input type="text" id="input-tahun-soal-bahas-soal" placeholder="Tahun Soal (Contoh: 2025)" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px;">
             </div>
             <div style="margin-bottom: 10px;">
                 <input type="number" id="input-jumlah-soal-bahas-soal" placeholder="Jumlah Nomor Soal (Contoh: 10)" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px;" min="1">
             </div>
-            <button type="button" onclick="tambahBahasSoalBaru('${kategori}', '${namaPelajaran}')" style="width: 100%; padding: 8px; background: #8c2222; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px;">Tambah Tahun Soal</button>
+            <button type="button" onclick="tambahBahasSoalBaru('${kategori}', '${namaPelajaran}')" style="width: 100%; padding: 8px; background: #b5532a; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px;">Tambah Tahun Soal</button>
         `;
         babContainer.appendChild(formDiv);
 
@@ -10699,14 +10699,14 @@ function renderSubTabNilai(jenisUjian) {
 
     let html = `
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-            <h4 style="margin: 0; color: #4a2525;">Data: ${jenisUjian}</h4>
+            <h4 style="margin: 0; color: #3a2f2a;">Data: ${jenisUjian}</h4>
             <button onclick="importNilaiSiswa('${jenisUjian}')" style="background: #27ae60; color: white; border: none; padding: 8px 15px; cursor: pointer; border-radius: 4px; font-weight: bold;">
                 <i class="fas fa-file-excel"></i> Import Nilai
             </button>
         </div>
         <table style="width: 100%; border-collapse: collapse; border: 1px solid #ccc; font-size: 14px;">
             <thead>
-                <tr style="background: #f4f4f4; color: #4a2525;">
+                <tr style="background: #f4f4f4; color: #3a2f2a;">
                     <th style="border: 1px solid #ccc; padding: 10px; text-align: left;">Mata Pelajaran</th>
                     <th style="border: 1px solid #ccc; padding: 10px; text-align: center; width: 120px;">Nilai</th>
                 </tr>
@@ -10757,7 +10757,7 @@ function renderSubTabNilai(jenisUjian) {
     html += `
             </tbody>
             <tfoot>
-                <tr style="font-weight: bold; background: #eee; color: #4a2525;">
+                <tr style="font-weight: bold; background: #eee; color: #3a2f2a;">
                     <td style="border: 1px solid #ccc; padding: 10px; text-align: right;">RATA-RATA:</td>
                     <td style="border: 1px solid #ccc; padding: 10px; text-align: center; ${styleRata}">${rataRata}</td>
                 </tr>
@@ -11007,13 +11007,13 @@ function updateStatistik() {
     let html = `
         <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
             <thead>
-                <tr style="background: #fdf6f5; color: #8c2222;">
+                <tr style="background: #faf5ec; color: #b5532a;">
                     <th style="padding: 10px; border: 1px solid #eee; text-align: left;">Pelajaran</th>
                     <th style="padding: 10px; border: 1px solid #eee; text-align: center;">Bacaan</th>
                     <th style="padding: 10px; border: 1px solid #eee; text-align: center;">Paham</th>
                     <th style="padding: 10px; border: 1px solid #eee; text-align: center;">Rangkum</th>
                     <th style="padding: 10px; border: 1px solid #eee; text-align: center;">Hafal</th>
-                    <th style="padding: 10px; border: 1px solid #eee; text-align: center; background: #f9ecea;">Total</th>
+                    <th style="padding: 10px; border: 1px solid #eee; text-align: center; background: #f2e7da;">Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -11062,19 +11062,19 @@ function updateStatistik() {
         akumulasiTotalSemua += totalPersenPel;
 
         html += `<tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding: 9px; font-weight: bold; color: #4a2525;">${pelajaran}</td>`;
+                    <td style="padding: 9px; font-weight: bold; color: #3a2f2a;">${pelajaran}</td>`;
 
         // Render khusus 4 kategori reguler ke dalam tabel
         ['bacaan', 'pemahaman', 'rangkuman', 'hafalan'].forEach(kat => {
             const persen = persentaseBaris[kat] || 0;
-            let warna = "#8c2222";
+            let warna = "#b5532a";
             if (persen >= 100) warna = "#1e8e3e";
             else if (persen >= 50) warna = "#b97603";
 
             html += `<td style="padding: 9px; text-align: center; color: ${warna}; font-weight: 600;">${persen}%</td>`;
         });
 
-        html += `<td style="padding: 9px; text-align: center; color: #8c2222; font-weight: 800; background: #fdf6f5;">${totalPersenPel}%</td>`;
+        html += `<td style="padding: 9px; text-align: center; color: #b5532a; font-weight: 800; background: #faf5ec;">${totalPersenPel}%</td>`;
         html += `</tr>`;
     });
 
@@ -11088,13 +11088,13 @@ function updateStatistik() {
     html += `
             </tbody>
             <tfoot>
-                <tr style="background: #fdf6f5; font-weight: bold; border-top: 2px solid #8c2222; color: #8c2222;">
+                <tr style="background: #faf5ec; font-weight: bold; border-top: 2px solid #b5532a; color: #b5532a;">
                     <td style="padding: 10px; border: 1px solid #eee; text-align: left;">RATA-RATA KESELURUHAN</td>
                     <td style="padding: 10px; border: 1px solid #eee; text-align: center;">${rataBacaan}%</td>
                     <td style="padding: 10px; border: 1px solid #eee; text-align: center;">${rataPaham}%</td>
                     <td style="padding: 10px; border: 1px solid #eee; text-align: center;">${rataRangkum}%</td>
                     <td style="padding: 10px; border: 1px solid #eee; text-align: center;">${rataHafal}%</td>
-                    <td style="padding: 10px; border: 1px solid #eee; text-align: center; background: #f9ecea; color: #8c2222;">${rataTotalSemua}%</td>
+                    <td style="padding: 10px; border: 1px solid #eee; text-align: center; background: #f2e7da; color: #b5532a;">${rataTotalSemua}%</td>
                 </tr>
             </tfoot>
         </table>
@@ -11123,7 +11123,7 @@ function updateProgressChart(stats) {
                 datasets: [{
                     label: 'Progress (%)',
                     data: data,
-                    backgroundColor: '#8c2222',
+                    backgroundColor: '#b5532a',
                     borderRadius: 6
                 }]
             },
@@ -11162,7 +11162,7 @@ function inisialisasiFormTarget() {
         wrapperGuru.id = "wrapper-nama-guru";
         wrapperGuru.style.marginBottom = "10px";
         wrapperGuru.innerHTML = `
-            <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px; color:#4a2525;">Nama Guru / Pemberi Target:</label>
+            <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:4px; color:#3a2f2a;">Nama Guru / Pemberi Target:</label>
             <input type="text" id="target-nama-guru" placeholder="Masukkan nama guru..." style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; font-size:13px;">
         `;
         selectSiswa.parentNode.insertBefore(wrapperGuru, selectSiswa);
@@ -11220,7 +11220,7 @@ function renderCheckboxesBab() {
 
     pelajaranDipilih.forEach(pel => {
         const jmlBab = getJumlahBab(pel);
-        contBab.innerHTML += `<div style="margin-top:10px; font-weight:bold; color:#8c2222; border-bottom:1px solid #f9ecea;">${pel}</div>`;
+        contBab.innerHTML += `<div style="margin-top:10px; font-weight:bold; color:#b5532a; border-bottom:1px solid #f2e7da;">${pel}</div>`;
 
         for (let i = 1; i <= jmlBab; i++) {
             contBab.innerHTML += `
@@ -11552,17 +11552,17 @@ function buatBarisProgressProgram(namaProgram, dataProgram) {
     const labelKapital = namaProgram.charAt(0).toUpperCase() + namaProgram.slice(1);
     const persen = dataProgram.persen || 0;
 
-    let warnaBar = "#8c2222";
+    let warnaBar = "#b5532a";
     if (persen >= 100) warnaBar = "#1e8e3e";
     else if (persen >= 50) warnaBar = "#b97603";
 
     return `
     <div style="margin-bottom: 16px;">
         <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 14px;">
-            <span style="font-weight: 600; color: #4a2525;">${labelKapital}</span>
-            <span style="color: #8c2222; font-weight: 700;">${persen}% (${dataProgram.selesai || 0}/${dataProgram.total || 0})</span>
+            <span style="font-weight: 600; color: #3a2f2a;">${labelKapital}</span>
+            <span style="color: #b5532a; font-weight: 700;">${persen}% (${dataProgram.selesai || 0}/${dataProgram.total || 0})</span>
         </div>
-        <div style="background: #f9ecea; border-radius: 20px; height: 16px; overflow: hidden;">
+        <div style="background: #f2e7da; border-radius: 20px; height: 16px; overflow: hidden;">
             <div style="height: 100%; width: ${persen}%; background: ${warnaBar}; transition: width 0.8s ease; border-radius: 20px;"></div>
         </div>
     </div>
@@ -11635,10 +11635,10 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
     let html = `
     <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
         <thead>
-            <tr style="background: #fdf6f5; color: #8c2222;">
+            <tr style="background: #faf5ec; color: #b5532a;">
                 <th style="padding: 10px; border: 1px solid #eee; text-align: left;">Pelajaran</th>
                 ${thKategori}
-                <th style="padding: 10px; border: 1px solid #eee; text-align: center; background: #f9ecea;">Total</th>
+                <th style="padding: 10px; border: 1px solid #eee; text-align: center; background: #f2e7da;">Total</th>
             </tr>
         </thead>
         <tbody>
@@ -11654,13 +11654,13 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
         if (!data) return;
 
         html += `<tr style="border-bottom: 1px solid #eee;">
-                <td style="padding: 9px; font-weight: bold; color: #4a2525;">${escapeHtml(pelajaran)}</td>`;
+                <td style="padding: 9px; font-weight: bold; color: #3a2f2a;">${escapeHtml(pelajaran)}</td>`;
 
         listKategori.forEach(kategori => {
             const persen = data[kategori] ? data[kategori].persen : 0;
             akumulasiProgram[kategori] = (akumulasiProgram[kategori] || 0) + persen;
 
-            let warna = "#8c2222";
+            let warna = "#b5532a";
             if (persen >= 100) warna = "#1e8e3e";
             else if (persen >= 50) warna = "#b97603";
 
@@ -11669,7 +11669,7 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
 
         akumulasiTotalSemua += data.totalPersen;
 
-        html += `<td style="padding: 9px; text-align: center; color: #8c2222; font-weight: 800; background: #fdf6f5;">${data.totalPersen}%</td>`;
+        html += `<td style="padding: 9px; text-align: center; color: #b5532a; font-weight: 800; background: #faf5ec;">${data.totalPersen}%</td>`;
         html += `</tr>`;
     });
 
@@ -11684,10 +11684,10 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
     html += `
         </tbody>
         <tfoot>
-            <tr style="background: #fdf6f5; font-weight: bold; border-top: 2px solid #8c2222; color: #8c2222;">
+            <tr style="background: #faf5ec; font-weight: bold; border-top: 2px solid #b5532a; color: #b5532a;">
                 <td style="padding: 10px; border: 1px solid #eee; text-align: left;">RATA-RATA KESELURUHAN</td>
                 ${tdRataRata}
-                <td style="padding: 10px; border: 1px solid #eee; text-align: center; background: #f9ecea; color: #8c2222;">${rataTotalSemua}%</td>
+                <td style="padding: 10px; border: 1px solid #eee; text-align: center; background: #f2e7da; color: #b5532a;">${rataTotalSemua}%</td>
             </tr>
         </tfoot>
     </table>
@@ -11779,7 +11779,7 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
                     if (passSearch && passStatus && passProgram && passPelajaran && passDeadline) {
                         adaData = true;
 
-                        let badgeBg = statusDinamis === "Selesai" ? "#e6f4ea" : (statusDinamis === "Terlambat" ? "#fbe9e7" : "#fdf6f5");
+                        let badgeBg = statusDinamis === "Selesai" ? "#e6f4ea" : (statusDinamis === "Terlambat" ? "#fbe9e7" : "#faf5ec");
                         let badgeColor = statusDinamis === "Selesai" ? "#1e8e3e" : (statusDinamis === "Terlambat" ? "#d32f2f" : "#c0392b");
                         let badgeBorder = statusDinamis === "Selesai" ? "#1e8e3e" : (statusDinamis === "Terlambat" ? "#d32f2f" : "#c0392b");
                         let iconStatus = statusDinamis === "Selesai" ? '<i class="fas fa-check-circle"></i> ' : (statusDinamis === "Terlambat" ? '<i class="fas fa-exclamation-circle"></i> ' : '<i class="fas fa-clock"></i> ');
@@ -11789,7 +11789,7 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
 
                         const tr = document.createElement("tr");
                         tr.style.cursor = 'pointer';
-                        tr.addEventListener('mouseenter', () => tr.style.backgroundColor = '#fdf6f5');
+                        tr.addEventListener('mouseenter', () => tr.style.backgroundColor = '#faf5ec');
                         tr.addEventListener('mouseleave', () => tr.style.backgroundColor = 'transparent');
                         tr.style.transition = '0.2s ease';
 
@@ -11801,32 +11801,32 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
                         };
 
                         tr.innerHTML = `
-                        <td style="padding: 15px; border-bottom: 1px solid #f9ecea; color: #4a2525;">
-                            <strong style="color: #8c2222;">${siswa.nama}</strong><br>
+                        <td style="padding: 15px; border-bottom: 1px solid #f2e7da; color: #3a2f2a;">
+                            <strong style="color: #b5532a;">${siswa.nama}</strong><br>
                             <small style="opacity: 0.8;">NIS: ${siswa.nis}</small>
                         </td>
-                        <td style="padding: 15px; border-bottom: 1px solid #f9ecea; color: #4a2525;">
+                        <td style="padding: 15px; border-bottom: 1px solid #f2e7da; color: #3a2f2a;">
                             <span style="text-transform: capitalize; font-weight: 600; color: #b97603;">${target.program}</span><br>
-                            <span style="color: #c9560f;">${target.pelajaran}</span>
+                            <span style="color: #b5532a;">${target.pelajaran}</span>
                         </td>
-                        <td style="padding: 15px; border-bottom: 1px solid #f9ecea; color: #4a2525; max-width: 250px;">
+                        <td style="padding: 15px; border-bottom: 1px solid #f2e7da; color: #3a2f2a; max-width: 250px;">
                             <div style="font-weight: 600; margin-bottom: 4px;">${textBab}</div>
                             <div style="font-size: 13px; opacity: 0.9; line-height: 1.4;">${textSub}</div>
                         </td>
-                        <td style="padding: 15px; border-bottom: 1px solid #f9ecea; color: #4a2525; font-size: 13px;">
+                        <td style="padding: 15px; border-bottom: 1px solid #f2e7da; color: #3a2f2a; font-size: 13px;">
                             ${target.tglDiberikan}<br>
-                            <small style="color: #8c2222; font-weight: 600;">Guru: ${escapeHtml(target.namaGuru || '-')}</small>
+                            <small style="color: #b5532a; font-weight: 600;">Guru: ${escapeHtml(target.namaGuru || '-')}</small>
                         </td>
-                        <td style="padding: 15px; border-bottom: 1px solid #f9ecea; color: #c9560f; font-weight: 700; font-size: 13px;">
+                        <td style="padding: 15px; border-bottom: 1px solid #f2e7da; color: #b5532a; font-weight: 700; font-size: 13px;">
                             ${target.deadline}
                         </td>
-                        <td style="padding: 15px; border-bottom: 1px solid #f9ecea; text-align: center;">
+                        <td style="padding: 15px; border-bottom: 1px solid #f2e7da; text-align: center;">
                             <span style="background: ${badgeBg}; color: ${badgeColor}; border: 1px solid ${badgeBorder}; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; display: inline-block;">
                                 ${iconStatus}${statusDinamis}
                             </span>
                         </td>
-                        <td style="padding: 15px; border-bottom: 1px solid #f9ecea; text-align: center;">
-                            <button type="button" onclick="event.stopPropagation(); hapusTarget('${siswa.nis}', ${index})" style="background: transparent; color: #c0392b; border: none; cursor: pointer; padding: 8px; border-radius: 50%; transition: 0.3s;" onmouseover="this.style.background='#fdf6f5'" onmouseout="this.style.background='transparent'">
+                        <td style="padding: 15px; border-bottom: 1px solid #f2e7da; text-align: center;">
+                            <button type="button" onclick="event.stopPropagation(); hapusTarget('${siswa.nis}', ${index})" style="background: transparent; color: #c0392b; border: none; cursor: pointer; padding: 8px; border-radius: 50%; transition: 0.3s;" onmouseover="this.style.background='#faf5ec'" onmouseout="this.style.background='transparent'">
                                 <i class="fas fa-trash-alt" style="font-size: 16px; pointer-events: none;"></i>
                             </button>
                         </td>
@@ -11838,7 +11838,7 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
         });
 
         if (!adaData) {
-            tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 30px; color: #b96d03; font-style: italic; background-color: #fdf6f5;">Belum ada target yang memenuhi kriteria pencarian / filter.</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 30px; color: #b96d03; font-style: italic; background-color: #faf5ec;">Belum ada target yang memenuhi kriteria pencarian / filter.</td></tr>`;
         }
     }
 
@@ -12082,7 +12082,7 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
                 const pelajaranAman = escapeHtml(a.pelajaran);
                 const babAman = escapeHtml(a.bab);
                 const subbabAman = escapeHtml(a.subbab);
-                return `<li style="padding: 10px 0; border-bottom: 1px solid #f9ecea;">
+                return `<li style="padding: 10px 0; border-bottom: 1px solid #f2e7da;">
                     <strong>${a.tanggal} • ${a.waktu}</strong> — ${namaAman} (${kelasAman})
                     <br>Setoran: <strong>${subbabAman}</strong>
                     <br><small>${programAman} • ${pelajaranAman} • ${babAman}</small></li>`;
@@ -12205,22 +12205,22 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
         });
 
         if (daftarBelumProgress.length === 0) {
-            container.innerHTML = '<p style="color:#4a2525; text-align:center; padding: 10px 0;">🎉 Semua siswa di daftar ini sudah setor hari ini.</p>';
+            container.innerHTML = '<p style="color:#3a2f2a; text-align:center; padding: 10px 0;">🎉 Semua siswa di daftar ini sudah setor hari ini.</p>';
             return;
         }
 
         container.innerHTML = daftarBelumProgress.map(siswa => {
             const persen = hitungProgressKeseluruhanSiswa(siswa.nis);
             return `
-            <div style="padding: 10px; border-bottom: 1px solid #f9ecea; border-radius: 8px; cursor: pointer; transition: background 0.2s;" 
-                 onmouseover="this.style.background='#fdf6f5'" 
+            <div style="padding: 10px; border-bottom: 1px solid #f2e7da; border-radius: 8px; cursor: pointer; transition: background 0.2s;" 
+                 onmouseover="this.style.background='#faf5ec'" 
                  onmouseout="this.style.background='transparent'" 
                  onclick="keStatistikPribadi('${siswa.nis}')" 
                  title="Klik untuk lihat statistik pribadi ${escapeHtml(siswa.nama)}">
-                <p style="margin:0; font-weight:600; color:#4a2525;">${escapeHtml(siswa.nama)}</p>
+                <p style="margin:0; font-weight:600; color:#3a2f2a;">${escapeHtml(siswa.nama)}</p>
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
-                    <span style="color:#c9560f; font-size: 13px;">${escapeHtml(siswa.kelas)}</span>
-                    <span style="color:#8c2222; font-size: 13px; font-weight:600;">Progress ${persen}%</span>
+                    <span style="color:#b5532a; font-size: 13px;">${escapeHtml(siswa.kelas)}</span>
+                    <span style="color:#b5532a; font-size: 13px; font-weight:600;">Progress ${persen}%</span>
                 </div>
             </div>`;
         }).join('');
@@ -12271,21 +12271,21 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
         const daftarTeraktif = hitungSiswaTeraktifHariIni(kelasTerpilih);
 
         if (daftarTeraktif.length === 0) {
-            container.innerHTML = '<p style="color:#4a2525; text-align:center; padding: 10px 0;">Belum ada aktivitas checklist hari ini.</p>';
+            container.innerHTML = '<p style="color:#3a2f2a; text-align:center; padding: 10px 0;">Belum ada aktivitas checklist hari ini.</p>';
             return;
         }
 
         container.innerHTML = daftarTeraktif.map((s, idx) => `
-            <div style="display:flex; justify-content:space-between; align-items:center; padding: 10px; border-bottom: 1px solid #f9ecea; border-radius: 8px; cursor: pointer; transition: background 0.2s;"
-                 onmouseover="this.style.background='#fdf6f5'" 
+            <div style="display:flex; justify-content:space-between; align-items:center; padding: 10px; border-bottom: 1px solid #f2e7da; border-radius: 8px; cursor: pointer; transition: background 0.2s;"
+                 onmouseover="this.style.background='#faf5ec'" 
                  onmouseout="this.style.background='transparent'"
                  onclick="bukaRiwayatSpesifik('${s.nis}', '${escapeHtml(s.nama)}')"
                  title="Klik untuk lihat rincian setoran ${escapeHtml(s.nama)}">
                 <div>
-                    <p style="margin:0; font-weight:600; color:#4a2525;">${idx + 1}. ${escapeHtml(s.nama)}</p>
-                    <p style="margin:2px 0 0; color:#c9560f; font-size: 13px;">${escapeHtml(s.kelas)}</p>
+                    <p style="margin:0; font-weight:600; color:#3a2f2a;">${idx + 1}. ${escapeHtml(s.nama)}</p>
+                    <p style="margin:2px 0 0; color:#b5532a; font-size: 13px;">${escapeHtml(s.kelas)}</p>
                 </div>
-                <p style="margin:0; color:#8c2222; font-size: 13px; font-weight:600; white-space:nowrap;">
+                <p style="margin:0; color:#b5532a; font-size: 13px; font-weight:600; white-space:nowrap;">
                     ${s.jumlah} checklist <i class="fas fa-chevron-right" style="margin-left: 5px; font-size: 10px;"></i>
                 </p>
             </div>`).join('');
@@ -12360,15 +12360,15 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
         // Isi tanggal
         for (let tgl = 1; tgl <= jumlahHari; tgl++) {
             const styleSel = (tgl === tandaiTanggal)
-                ? 'background:#8c2222; color:#fff; border-radius:50%; font-weight:700;'
-                : 'color:#4a2525;';
+                ? 'background:#b5532a; color:#fff; border-radius:50%; font-weight:700;'
+                : 'color:#3a2f2a;';
             sel += `<div style="padding:6px 0; text-align:center; font-size:13px; ${styleSel}">${tgl}</div>`;
         }
 
-        const headerHari = NAMA_HARI_PENDEK.map(h => `<div style="text-align:center; font-size:12px; font-weight:700; color:#8c2222; padding-bottom:5px;">${h}</div>`).join('');
+        const headerHari = NAMA_HARI_PENDEK.map(h => `<div style="text-align:center; font-size:12px; font-weight:700; color:#b5532a; padding-bottom:5px;">${h}</div>`).join('');
 
         return `
-        <p style="text-align:center; font-weight:700; margin: 0 0 10px; color:#4a2525;">${NAMA_BULAN[bulan]} ${tahun}</p>
+        <p style="text-align:center; font-weight:700; margin: 0 0 10px; color:#3a2f2a;">${NAMA_BULAN[bulan]} ${tahun}</p>
         <div style="display:grid; grid-template-columns: repeat(7, 1fr); gap:2px;">
             ${headerHari}${sel}
         </div>`;
@@ -12409,7 +12409,7 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
         if (!modal || !listEl) return;
 
         listEl.innerHTML = DAFTAR_PELAJARAN.map((p, idx) => `
-        <li style="padding: 10px 0; border-bottom: 1px solid #f9ecea; color:#4a2525;">
+        <li style="padding: 10px 0; border-bottom: 1px solid #f2e7da; color:#3a2f2a;">
             ${idx + 1}. ${escapeHtml(p)}
         </li>`).join('');
 
@@ -12645,10 +12645,10 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
         } else {
             listEl.innerHTML = sorted.map((s, idx) => {
                 const arrTanggal = Array.from(s.hariAktif).map(k => s.detailHari[k]);
-                return `<li style="padding: 10px 0; border-bottom: 1px solid #f9ecea;">
+                return `<li style="padding: 10px 0; border-bottom: 1px solid #f2e7da;">
                     <strong>${idx + 1}. ${escapeHtml(s.nama)} (${escapeHtml(s.kelas)})</strong>
-                    <br><span style="color:#8c2222; font-weight:600;">Aktif: ${s.hariAktif.size} Hari</span>
-                    <br><small style="color:#c9560f;">Tanggal: ${arrTanggal.join(', ')}</small></li>`;
+                    <br><span style="color:#b5532a; font-weight:600;">Aktif: ${s.hariAktif.size} Hari</span>
+                    <br><small style="color:#b5532a;">Tanggal: ${arrTanggal.join(', ')}</small></li>`;
             }).join('');
         }
 
@@ -12679,10 +12679,10 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
                 const subbabAman = escapeHtml(a.subbab);
 
                 // Format HTML sesuai contoh yang Anda minta: Hafalan - Kimia - Bab 1 - Sub bab 1
-                return `<li style="padding: 10px 0; border-bottom: 1px solid #f9ecea;">
+                return `<li style="padding: 10px 0; border-bottom: 1px solid #f2e7da;">
                     <strong>${a.waktu}</strong>
-                    <br>Setoran: <strong style="color:#8c2222;">${subbabAman}</strong>
-                    <br><small style="color:#c9560f;">${programAman} - ${pelajaranAman} - ${babAman}</small></li>`;
+                    <br>Setoran: <strong style="color:#b5532a;">${subbabAman}</strong>
+                    <br><small style="color:#b5532a;">${programAman} - ${pelajaranAman} - ${babAman}</small></li>`;
             }).join('');
         }
 
@@ -12762,10 +12762,10 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
             listEl.innerHTML = '<li style="padding:10px 0;">🎉 Semua siswa terpilih selalu setor setiap hari dalam seminggu terakhir.</li>';
         } else {
             listEl.innerHTML = rekapTidakAktif.map((s, idx) => {
-                return `<li style="padding: 10px 0; border-bottom: 1px solid #f9ecea;">
+                return `<li style="padding: 10px 0; border-bottom: 1px solid #f2e7da;">
                     <strong>${idx + 1}. ${escapeHtml(s.nama)} (${escapeHtml(s.kelas)})</strong>
                     <br><span style="color:#c0392b; font-weight:600;">Tidak Progress: ${s.jumlahKosong} Hari</span>
-                    <br><small style="color:#4a2525;">Tanggal: ${s.hari.join(', ')}</small></li>`;
+                    <br><small style="color:#3a2f2a;">Tanggal: ${s.hari.join(', ')}</small></li>`;
             }).join('');
         }
 
@@ -12929,11 +12929,11 @@ function renderTabelGuru() {
             count++;
             barisHTML += `
             <tr style="border-bottom: 1px solid #eee;">
-                <td style="padding: 10px; border: 1px solid #eee; font-weight: bold; color: #8c2222;">${guru.noGuru || '-'}</td>
-                <td style="padding: 10px; border: 1px solid #eee; font-weight: bold; color: #4a2525;">${guru.nama}</td>
+                <td style="padding: 10px; border: 1px solid #eee; font-weight: bold; color: #b5532a;">${guru.noGuru || '-'}</td>
+                <td style="padding: 10px; border: 1px solid #eee; font-weight: bold; color: #3a2f2a;">${guru.nama}</td>
                 <td style="padding: 10px; border: 1px solid #eee;">${guru.tahun || '-'}</td>
                 <td style="padding: 10px; border: 1px solid #eee;">${guru.daerah || '-'}</td>
-                <td style="padding: 10px; border: 1px solid #eee;"><span style="background: #fdf6f5; color: #8c2222; padding: 3px 8px; border-radius: 10px; font-size: 12px; font-weight: bold; border: 1px solid #f9ecea;">${guru.bagian || '-'}</span></td>
+                <td style="padding: 10px; border: 1px solid #eee;"><span style="background: #faf5ec; color: #b5532a; padding: 3px 8px; border-radius: 10px; font-size: 12px; font-weight: bold; border: 1px solid #f2e7da;">${guru.bagian || '-'}</span></td>
                 <td style="padding: 10px; border: 1px solid #eee;">${guru.noHp || '-'}</td>
                 <td style="padding: 10px; border: 1px solid #eee; text-align: center;">
                     <button onclick="bukaModalEditGuru(${index})" style="background: #f39c12; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; margin-bottom: 2px;" title="Edit"><i class="fas fa-edit"></i></button>
@@ -13180,11 +13180,11 @@ function hapusGuru(index) {
         // Tampilkan daftar nama yang sesuai di bawah input
         hasilFilter.forEach(siswa => {
             const item = document.div || document.createElement('div');
-            item.style.cssText = "padding: 10px; font-size: 13px; cursor: pointer; border-bottom: 1px solid #f9ecea; color: #4a2525;";
-            item.innerHTML = `<strong>${escapeHtml(siswa.nama)}</strong> <small style="color: #c9560f;">(${escapeHtml(siswa.kelas)})</small>`;
+            item.style.cssText = "padding: 10px; font-size: 13px; cursor: pointer; border-bottom: 1px solid #f2e7da; color: #3a2f2a;";
+            item.innerHTML = `<strong>${escapeHtml(siswa.nama)}</strong> <small style="color: #b5532a;">(${escapeHtml(siswa.kelas)})</small>`;
 
             // Efek hover interaktif
-            item.onmouseover = () => item.style.background = "#fdf6f5";
+            item.onmouseover = () => item.style.background = "#faf5ec";
             item.onmouseout = () => item.style.background = "white";
 
             // Ketika salah satu nama diklik
@@ -13255,13 +13255,13 @@ function hapusGuru(index) {
                     const div = document.createElement("div");
                     div.style.padding = "10px 15px";
                     div.style.cursor = "pointer";
-                    div.style.borderBottom = "1px solid #f9ecea";
-                    div.style.color = "#4a2525";
+                    div.style.borderBottom = "1px solid #f2e7da";
+                    div.style.color = "#3a2f2a";
                     div.style.fontWeight = "bold";
                     div.innerHTML = guru.nama;
 
                     // Efek hover
-                    div.onmouseover = function () { this.style.background = "#fdf6f5"; };
+                    div.onmouseover = function () { this.style.background = "#faf5ec"; };
                     div.onmouseout = function () { this.style.background = "white"; };
 
                     // Saat nama diklik
@@ -13444,10 +13444,10 @@ function logoutWeb() {
         const btnRekap = document.getElementById('btn-tab-rekap-absen');
 
         if (isForm) {
-            if (btnForm) { btnForm.style.background = '#8c2222'; btnForm.style.color = 'white'; }
+            if (btnForm) { btnForm.style.background = '#b5532a'; btnForm.style.color = 'white'; }
             if (btnRekap) { btnRekap.style.background = '#fafafa'; btnRekap.style.color = '#444'; }
         } else {
-            if (btnRekap) { btnRekap.style.background = '#8c2222'; btnRekap.style.color = 'white'; }
+            if (btnRekap) { btnRekap.style.background = '#b5532a'; btnRekap.style.color = 'white'; }
             if (btnForm) { btnForm.style.background = '#fafafa'; btnForm.style.color = '#444'; }
 
             if (typeof renderRekapAbsen === 'function') {
@@ -13510,10 +13510,10 @@ function logoutWeb() {
             else if (progresTotal >= 50) warnaProgres = "#b97603";
 
             html += `
-            <tr style="border-bottom: 1px solid #f9ecea;">
-                <td style="text-align: center; font-weight: bold; color: #4a2525;">${index + 1}</td>
+            <tr style="border-bottom: 1px solid #f2e7da;">
+                <td style="text-align: center; font-weight: bold; color: #3a2f2a;">${index + 1}</td>
                 <td>${escapeHtml(siswa.nis)}</td>
-                <td style="font-weight: 600; color: #8c2222;">${escapeHtml(siswa.nama)}</td>
+                <td style="font-weight: 600; color: #b5532a;">${escapeHtml(siswa.nama)}</td>
                 <td>${escapeHtml(siswa.kelas)}</td>
                 <td>${escapeHtml(siswa.daerah)}</td>
                 <td><code>${escapeHtml(siswa.barcode)}</code></td>
@@ -13597,17 +13597,17 @@ function logoutWeb() {
             let teksWarna = persenHadir === 100 ? '#1e8e3e' : (persenHadir > 50 ? '#e65100' : '#d32f2f');
 
             html += `
-            <tr style="border-bottom: 1px solid #f9ecea;">
-                <td style="padding: 12px;"><strong style="color:#8c2222;">${rekap.tanggal}</strong><br><small style="color:#666;">${rekap.waktu}</small></td>
-                <td style="font-weight:bold; color:#c9560f; padding: 12px;">${rekap.kelas}</td>
-                <td style="padding: 12px; color: #4a2525;">${rekap.pembaca}</td>
+            <tr style="border-bottom: 1px solid #f2e7da;">
+                <td style="padding: 12px;"><strong style="color:#b5532a;">${rekap.tanggal}</strong><br><small style="color:#666;">${rekap.waktu}</small></td>
+                <td style="font-weight:bold; color:#b5532a; padding: 12px;">${rekap.kelas}</td>
+                <td style="padding: 12px; color: #3a2f2a;">${rekap.pembaca}</td>
                 <td style="padding: 12px;">
                     <span style="background: ${warnaBadge}; color: ${teksWarna}; padding: 4px 10px; border-radius: 20px; font-weight: bold; font-size: 13px;">
                         ${rekap.hadir} dari ${rekap.totalSiswa} Hadir
                     </span>
                 </td>
                 <td style="padding: 12px;">
-                    <button onclick="hapusRekapAbsen(${index})" style="background: transparent; color: #c0392b; border: none; cursor: pointer; padding: 5px; transition: 0.2s;" onmouseover="this.style.color='#8c2222'" onmouseout="this.style.color='#c0392b'" title="Hapus Riwayat Ini">
+                    <button onclick="hapusRekapAbsen(${index})" style="background: transparent; color: #c0392b; border: none; cursor: pointer; padding: 5px; transition: 0.2s;" onmouseover="this.style.color='#b5532a'" onmouseout="this.style.color='#c0392b'" title="Hapus Riwayat Ini">
                         <i class="fas fa-trash-alt"></i> Hapus
                     </button>
                 </td>
@@ -13656,10 +13656,10 @@ function logoutWeb() {
         let html = "";
         skorKelas.forEach((item, idx) => { // Ditampilkan semua kelas
             let medali = idx === 0 ? "🏆" : (idx === 1 ? "🥈" : (idx === 2 ? "🥉" : `${idx + 1}.`));
-            let bg = idx === 0 ? "#fff9e6" : "#fdf6f5";
+            let bg = idx === 0 ? "#fff9e6" : "#faf5ec";
             html += `
             <div style="display:flex; justify-content:space-between; margin-bottom:10px; padding:12px; background:${bg}; border-radius:8px; border-left: 4px solid #f39c12;">
-                <span style="font-weight:600; color:#4a2525;">${medali} Kelas ${item.kelas}</span>
+                <span style="font-weight:600; color:#3a2f2a;">${medali} Kelas ${item.kelas}</span>
                 <span style="font-weight:bold; color:#1e8e3e; font-size:16px;">${item.rataRata}%</span>
             </div>
         `;
@@ -13677,10 +13677,10 @@ function logoutWeb() {
         const btnSemua = document.getElementById('btn-tab-stat-semua');
 
         if (isDetail) {
-            btnDetail.style.background = '#8c2222'; btnDetail.style.color = 'white';
+            btnDetail.style.background = '#b5532a'; btnDetail.style.color = 'white';
             btnSemua.style.background = '#fafafa'; btnSemua.style.color = '#444';
         } else {
-            btnSemua.style.background = '#8c2222'; btnSemua.style.color = 'white';
+            btnSemua.style.background = '#b5532a'; btnSemua.style.color = 'white';
             btnDetail.style.background = '#fafafa'; btnDetail.style.color = '#444';
             renderPeringkatKelas(); // Render tabel peringkat saat tab dibuka
         }
@@ -13713,9 +13713,9 @@ function logoutWeb() {
             let rankBadge = index < 3 ? `<i class="fas fa-trophy" style="color:${warnaMedali}; font-size:18px;"></i> ${index + 1}` : `<strong>${index + 1}</strong>`;
 
             html += `
-            <tr style="border-bottom: 1px solid #f9ecea;">
+            <tr style="border-bottom: 1px solid #f2e7da;">
                 <td style="text-align:center; padding: 12px;">${rankBadge}</td>
-                <td style="font-weight:bold; color:#8c2222; text-transform:uppercase; padding: 12px;">${item.kelas}</td>
+                <td style="font-weight:bold; color:#b5532a; text-transform:uppercase; padding: 12px;">${item.kelas}</td>
                 <td style="text-align:center; padding: 12px;">${item.jumlahSiswa} Siswa</td>
                 <td style="text-align:center; padding: 12px;">${item.babSelesai} / ${item.totalBab} Bab</td>
                 <td style="text-align:center; font-weight:bold; color:#1e8e3e; font-size:16px; padding: 12px;">${item.persen}%</td>
@@ -13763,10 +13763,10 @@ function logoutWeb() {
         top3.forEach((item, idx) => {
             if (item.skor > 0) {
                 let ikon = idx === 0 ? "🔥" : (idx === 1 ? "⚡" : "✨");
-                let bg = idx === 0 ? "#fff2f0" : "#fdf6f5";
+                let bg = idx === 0 ? "#fff2f0" : "#faf5ec";
                 html += `
                 <div style="display:flex; justify-content:space-between; margin-bottom:10px; padding:12px; background:${bg}; border-radius:8px; border-left: 4px solid #e74c3c;">
-                    <span style="font-weight:600; color:#4a2525;">${ikon} Kelas ${item.kelas}</span>
+                    <span style="font-weight:600; color:#3a2f2a;">${ikon} Kelas ${item.kelas}</span>
                     <span style="font-weight:bold; color:#e74c3c; font-size:16px;">${item.skor} Setoran</span>
                 </div>
             `;
@@ -13777,7 +13777,7 @@ function logoutWeb() {
             html = "<p style='text-align:center; color: #777; font-size:14px; font-style:italic;'>Belum ada aktivitas setoran sub-bab hari ini.</p>";
         } else {
             html += `
-            <div style="text-align: right; margin-top: 12px; border-top: 1px dashed #f9ecea; padding-top: 8px;">
+            <div style="text-align: right; margin-top: 12px; border-top: 1px dashed #f2e7da; padding-top: 8px;">
                 <button type="button" onclick="resetKelasTeraktifHariIni()" style="background: transparent; color: #c0392b; border: 1px solid #c0392b; padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#fbe9e7'" onmouseout="this.style.background='transparent'">
                     <i class="fas fa-undo"></i> Reset Hari Ini
                 </button>
@@ -13830,7 +13830,7 @@ function logoutWeb() {
         }
 
         container.innerHTML = `
-        <div onclick="bukaModalRekapHarian()" style="background: linear-gradient(135deg, #8c2222, #b52b2b); color: white; padding: 20px; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 10px rgba(140, 34, 34, 0.2); display: flex; justify-content: space-between; align-items: center; transition: 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+        <div onclick="bukaModalRekapHarian()" style="background: linear-gradient(135deg, #b5532a, #b52b2b); color: white; padding: 20px; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 10px rgba(90, 60, 30, 0.2); display: flex; justify-content: space-between; align-items: center; transition: 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
             <div>
                 <h3 style="margin: 0 0 5px 0; font-size: 18px; display: flex; align-items: center; gap: 8px;">
                     <i class="fas fa-chart-line"></i> Rekap Kelas Hari Ini
@@ -13888,10 +13888,10 @@ function logoutWeb() {
         } else {
             setoranHariIni.forEach((log, index) => {
                 html += `
-                <tr style="border-bottom: 1px solid #f2f2f2; transition: 0.2s;" onmouseover="this.style.background='#fdf6f5'" onmouseout="this.style.background='transparent'">
+                <tr style="border-bottom: 1px solid #f2f2f2; transition: 0.2s;" onmouseover="this.style.background='#faf5ec'" onmouseout="this.style.background='transparent'">
                     <td style="padding: 12px; text-align: center; color: #555; font-weight: bold;">${index + 1}</td>
                     <td style="padding: 12px; text-align: center; color: #555;">${log.waktu || '-'}</td>
-                    <td style="padding: 12px; color: #8c2222;"><strong>${log.nama}</strong></td>
+                    <td style="padding: 12px; color: #b5532a;"><strong>${log.nama}</strong></td>
                     <td style="padding: 12px; text-align: center; font-weight: bold; color: #555;">${log.kelas || '-'}</td>
                     <td style="padding: 12px;">
                         <span style="color: #b97603; font-weight: bold; text-transform: capitalize; font-size: 13px;">${log.program}</span><br>
@@ -14125,9 +14125,9 @@ function renderAktifitasGuruLengkap() {
             top5.forEach((g, idx) => {
                 let medali = idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : "";
                 tbodyTeraktif.innerHTML += `
-                <tr onclick="bukaDetailAktivitasGuru('${g.nama}')" style="cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='#fdf6f5'" onmouseout="this.style.background='transparent'" title="Klik untuk lihat rincian setoran">
+                <tr onclick="bukaDetailAktivitasGuru('${g.nama}')" style="cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='#faf5ec'" onmouseout="this.style.background='transparent'" title="Klik untuk lihat rincian setoran">
                     <td style="padding: 10px; border-bottom: 1px solid #eee; text-align: center; font-weight: bold; font-size: 16px;">${idx + 1} ${medali}</td>
-                    <td style="padding: 10px; border-bottom: 1px solid #eee; color: #4a2525; font-weight: 600;">${g.nama}</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #eee; color: #3a2f2a; font-weight: 600;">${g.nama}</td>
                     <td style="padding: 10px; border-bottom: 1px solid #eee; text-align: center;">
                         <span style="background: #27ae60; color: white; padding: 4px 10px; border-radius: 15px; font-size: 12px; font-weight: bold;">${g.jumlah} Aksi</span>
                     </td>
@@ -14149,8 +14149,8 @@ function renderAktifitasGuruLengkap() {
             guruTanpaAktivitas.forEach((nama, idx) => {
                 tbodyNonAktif.innerHTML += `
                 <tr>
-                    <td style="padding: 10px; border-bottom: 1px solid #f9ecea; text-align: center; font-weight: bold; color: #777;">${idx + 1}</td>
-                    <td style="padding: 10px; border-bottom: 1px solid #f9ecea; color: #c0392b; font-weight: 600;">${nama}</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #f2e7da; text-align: center; font-weight: bold; color: #777;">${idx + 1}</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #f2e7da; color: #c0392b; font-weight: 600;">${nama}</td>
                 </tr>`;
             });
         }
@@ -14288,11 +14288,11 @@ function renderTabelGuru() {
             count++;
             barisHTML += `
             <tr style="border-bottom: 1px solid #eee;">
-                <td style="padding: 10px; border: 1px solid #eee; font-weight: bold; color: #8c2222;">${guru.noGuru || '-'}</td>
-                <td style="padding: 10px; border: 1px solid #eee; font-weight: bold; color: #4a2525;">${guru.nama}</td>
+                <td style="padding: 10px; border: 1px solid #eee; font-weight: bold; color: #b5532a;">${guru.noGuru || '-'}</td>
+                <td style="padding: 10px; border: 1px solid #eee; font-weight: bold; color: #3a2f2a;">${guru.nama}</td>
                 <td style="padding: 10px; border: 1px solid #eee;">${guru.tahun || '-'}</td>
                 <td style="padding: 10px; border: 1px solid #eee;">${guru.daerah || '-'}</td>
-                <td style="padding: 10px; border: 1px solid #eee;"><span style="background: #fdf6f5; color: #8c2222; padding: 3px 8px; border-radius: 10px; font-size: 12px; font-weight: bold; border: 1px solid #f9ecea;">${guru.bagian || '-'}</span></td>
+                <td style="padding: 10px; border: 1px solid #eee;"><span style="background: #faf5ec; color: #b5532a; padding: 3px 8px; border-radius: 10px; font-size: 12px; font-weight: bold; border: 1px solid #f2e7da;">${guru.bagian || '-'}</span></td>
                 <td style="padding: 10px; border: 1px solid #eee;">${guru.noHp || '-'}</td>
                 <td style="padding: 10px; border: 1px solid #eee; text-align: center;">
                     <button onclick="bukaModalEditGuru(${index})" style="background: #f39c12; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; margin-bottom: 2px;" title="Edit"><i class="fas fa-edit"></i></button>
@@ -14591,12 +14591,12 @@ function switchStatistikGlobalTab(tab) {
     const kontenNilai = document.getElementById('konten-stat-nilai');
 
     if (tab === 'pembelajaran') {
-        if (btnPembelajaran) { btnPembelajaran.style.background = '#8c2222'; btnPembelajaran.style.color = 'white'; }
+        if (btnPembelajaran) { btnPembelajaran.style.background = '#b5532a'; btnPembelajaran.style.color = 'white'; }
         if (btnNilai) { btnNilai.style.background = '#ddd'; btnNilai.style.color = '#333'; }
         if (kontenPembelajaran) kontenPembelajaran.style.display = 'block';
         if (kontenNilai) kontenNilai.style.display = 'none';
     } else if (tab === 'nilai') {
-        if (btnNilai) { btnNilai.style.background = '#8c2222'; btnNilai.style.color = 'white'; }
+        if (btnNilai) { btnNilai.style.background = '#b5532a'; btnNilai.style.color = 'white'; }
         if (btnPembelajaran) { btnPembelajaran.style.background = '#ddd'; btnPembelajaran.style.color = '#333'; }
         if (kontenPembelajaran) kontenPembelajaran.style.display = 'none';
         if (kontenNilai) kontenNilai.style.display = 'block';
@@ -14616,9 +14616,9 @@ function pilihStatistikUjian(jenisUjian) {
         if (b) { b.style.background = '#ddd'; b.style.color = '#333'; }
     });
 
-    if (jenisUjian === 'Ulangan Umum' && btn1) { btn1.style.background = '#8c2222'; btn1.style.color = 'white'; }
-    if (jenisUjian === 'Ujian Awal Tahun' && btn2) { btn2.style.background = '#8c2222'; btn2.style.color = 'white'; }
-    if (jenisUjian === 'Ujian Akhir Tahun' && btn3) { btn3.style.background = '#8c2222'; btn3.style.color = 'white'; }
+    if (jenisUjian === 'Ulangan Umum' && btn1) { btn1.style.background = '#b5532a'; btn1.style.color = 'white'; }
+    if (jenisUjian === 'Ujian Awal Tahun' && btn2) { btn2.style.background = '#b5532a'; btn2.style.color = 'white'; }
+    if (jenisUjian === 'Ujian Akhir Tahun' && btn3) { btn3.style.background = '#b5532a'; btn3.style.color = 'white'; }
 
     const judulEl = document.getElementById('judul-statistik-nilai-global');
     if (judulEl) judulEl.textContent = 'Statistik Nilai: ' + jenisUjian;
@@ -14658,7 +14658,7 @@ function renderStatistikNilaiGlobal() {
         let html = `
         <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
             <thead>
-                <tr style="background: #fdf6f5; color: #8c2222;">
+                <tr style="background: #faf5ec; color: #b5532a;">
                     <th style="padding: 10px; border: 1px solid #eee; text-align: left;">Mata Pelajaran</th>
                     <th style="padding: 10px; border: 1px solid #eee; text-align: center;">Jumlah Data Nilai</th>
                     <th style="padding: 10px; border: 1px solid #eee; text-align: center;">Rata-rata Nilai (${jenisUjianStatistikAktif})</th>
@@ -14682,7 +14682,7 @@ function renderStatistikNilaiGlobal() {
             const styleNilai = rata !== '-' ? `background-color: ${warnaBg}; font-weight: bold;` : '';
 
             html += `<tr>
-            <td style="padding: 9px; border: 1px solid #eee; font-weight: bold; color: #4a2525;">${pel}</td>
+            <td style="padding: 9px; border: 1px solid #eee; font-weight: bold; color: #3a2f2a;">${pel}</td>
             <td style="padding: 9px; border: 1px solid #eee; text-align: center;">${data.count} siswa</td>
             <td style="padding: 9px; border: 1px solid #eee; text-align: center; ${styleNilai}">${rata}</td>
             </tr>`;
@@ -14694,7 +14694,7 @@ function renderStatistikNilaiGlobal() {
         html += `
             </tbody>
             <tfoot>
-                <tr style="background: #fdf6f5; font-weight: bold; border-top: 2px solid #8c2222; color: #8c2222;">
+                <tr style="background: #faf5ec; font-weight: bold; border-top: 2px solid #b5532a; color: #b5532a;">
                     <td style="padding: 10px; border: 1px solid #eee; text-align: left;">RATA-RATA KESELURUHAN</td>
                     <td style="padding: 10px; border: 1px solid #eee; text-align: center;">-</td>
                     <td style="padding: 10px; border: 1px solid #eee; text-align: center; background-color: ${warnaGlobal};">${rataGlobal}</td>
@@ -14714,7 +14714,7 @@ function renderStatistikNilaiGlobal() {
         let htmlKelas = `
         <table style="width: 100%; border-collapse: collapse; font-size: 13px; overflow-x: auto; display: block;">
             <thead>
-                <tr style="background: #fdf6f5; color: #8c2222;">
+                <tr style="background: #faf5ec; color: #b5532a;">
                     <th style="padding: 10px; border: 1px solid #eee; text-align: left; min-width: 120px;">Kelas</th>
         `;
         DAFTAR_PELAJARAN.forEach(pel => { htmlKelas += `<th style="padding: 10px; border: 1px solid #eee; text-align: center; min-width: 90px;">${pel}</th>`; });
@@ -14722,7 +14722,7 @@ function renderStatistikNilaiGlobal() {
 
         daftarKelas.forEach(kelas => {
             const siswaKelas = Object.values(databaseSiswa).filter(s => s.kelas === kelas);
-            htmlKelas += `<tr><td style="padding: 9px; border: 1px solid #eee; font-weight: bold; color: #4a2525;">${kelas}</td>`;
+            htmlKelas += `<tr><td style="padding: 9px; border: 1px solid #eee; font-weight: bold; color: #3a2f2a;">${kelas}</td>`;
 
             DAFTAR_PELAJARAN.forEach(pel => {
                 let sum = 0, cnt = 0;
@@ -14805,11 +14805,11 @@ function bukaDetailAktivitasGuru(namaGuru) {
     } else {
         aktivitasGuruIni.forEach(item => {
             list.innerHTML += `
-            <li style="padding: 12px 10px; border-bottom: 1px solid #f9ecea;">
-                <div style="font-weight: bold; color: #8c2222; font-size: 13px; margin-bottom: 4px;">
+            <li style="padding: 12px 10px; border-bottom: 1px solid #f2e7da;">
+                <div style="font-weight: bold; color: #b5532a; font-size: 13px; margin-bottom: 4px;">
                     <i class="far fa-clock"></i> Pukul ${item.waktu}
                 </div>
-                <div style="color: #4a2525; font-size: 14px;">
+                <div style="color: #3a2f2a; font-size: 14px;">
                     ${item.aktivitas}
                 </div>
             </li>`;
@@ -14962,8 +14962,162 @@ function renderDashKelas() {
 // Kolom "Kelas Wali" pada form guru
 (function () {
     const sudah = document.getElementById('input-kelaswali-guru');
-    if (!sudah) { const hp = document.getElementById('input-hp-guru'); if (hp) hp.insertAdjacentHTML('afterend', '<label style="font-weight:600;font-size:13px;color:#4a2525;">Kelas Wali (opsional, pisahkan koma):</label><input type="text" id="input-kelaswali-guru" placeholder="Cth: 6-A, 6-B" style="width:100%;margin-bottom:15px;padding:10px;box-sizing:border-box;border-radius:5px;border:1px solid #ccc;">'); }
+    if (!sudah) { const hp = document.getElementById('input-hp-guru'); if (hp) hp.insertAdjacentHTML('afterend', '<label style="font-weight:600;font-size:13px;color:#3a2f2a;">Kelas Wali (opsional, pisahkan koma):</label><input type="text" id="input-kelaswali-guru" placeholder="Cth: 6-A, 6-B" style="width:100%;margin-bottom:15px;padding:10px;box-sizing:border-box;border-radius:5px;border:1px solid #ccc;">'); }
     const nav = document.getElementById('dash-nav');
     if (nav) nav.addEventListener('click', e => { const b = e.target.closest('.dash-tab'); if (b) pindahHalaman(b.dataset.dash); });
     dashSetNav('dashboard');
 })();
+
+/* ==================================================================
+   [FITUR BARU] TARGET JUMBO (Guru -> Target Siswa)
+   Data: Firebase 'targetJumbo/{id}' (1 catatan atomik, penerima = daftar NIS).
+   Progres: dihitung dari recentActivityLog (setoran Sub Bab yang sudah ada), unik per nis+program+pelajaran+bab+subbab.
+   ================================================================== */
+let jbData = {}, jbSiap = false, jbDetail = null, jbSaving = false;
+const jbTulis = new Set();
+const jbT = s => new Date(s + 'T00:00:00').getTime(), jbTE = s => jbT(s) + 864e5 - 1;
+const jbHariIni = () => new Date(Date.now() - new Date().getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
+const jbFmt = s => s ? new Date(s + 'T00:00:00').toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) : '-';
+const jbAngkatan = k => (String(k).match(/^\s*(\d+)/) || [])[1] || 'Lainnya';
+function jbKelasBoleh() {
+    const ada = getDaftarKelasUnik();
+    if (isAdminAktif()) return ada;
+    const n = s => String(s).trim().toLowerCase(), w = kelasWaliAktif();
+    return ada.filter(k => w.some(x => n(x) === n(k)));
+}
+function jbHitung(t) {
+    const boleh = jbKelasBoleh(), set = new Set(t.penerima || []), t0 = jbT(t.mulai), seen = new Set(), ts = {}, now = Date.now();
+    recentActivityLog.forEach(a => {
+        if (!a || !set.has(a.nis) || a.timestamp < t0) return;
+        const k = [a.nis, a.program, a.pelajaran, a.bab, a.subbab].join('|');
+        if (seen.has(k)) return; seen.add(k); (ts[a.nis] = ts[a.nis] || []).push(a.timestamp);
+    });
+    const r = { rows: [], Selesai: 0, 'Dalam Proses': 0, Terlambat: 0, 'Belum Dimulai': 0 };
+    set.forEach(nis => {
+        const s = databaseSiswa[nis]; if (!s || !boleh.includes(s.kelas)) return;
+        const arr = (ts[nis] || []).sort((a, b) => a - b), n = arr.length;
+        const tSel = (t.selesai && t.selesai[nis]) || (n >= t.jumlah ? arr[t.jumlah - 1] : null);
+        let st = tSel ? 'Selesai' : now > jbTE(t.deadline) ? 'Terlambat' : n > 0 ? 'Dalam Proses' : 'Belum Dimulai';
+        if (tSel && !(t.selesai && t.selesai[nis]) && t.status !== 'dibatalkan' && typeof firebaseDb !== 'undefined' && !jbTulis.has(t.id + nis)) {
+            jbTulis.add(t.id + nis); firebaseDb.ref(`targetJumbo/${t.id}/selesai/${nis}`).set(tSel).catch(() => jbTulis.delete(t.id + nis));
+        }
+        r[st]++; r.rows.push({ nis, nama: s.nama, kelas: s.kelas, n: tSel ? t.jumlah : Math.min(n, t.jumlah), st, tSel });
+    });
+    return r;
+}
+const jbBadge = st => `<span class="jb-badge jb-${st.replace(/ /g, '')}">${st}</span>`;
+const jbBar = p => `<div class="dash-bar"><span style="width:${p}%"></span></div>`;
+
+function jbPasangUI() {
+    const v = document.getElementById('view-target-siswa'); if (!v || document.getElementById('jb-panel')) return;
+    const lama = document.createElement('div'); lama.id = 'target-lama';
+    [...v.children].slice(1).forEach(k => lama.appendChild(k)); v.appendChild(lama);
+    v.children[0].insertAdjacentHTML('afterend', '<div class="tabs-menu jb-tabs"><button type="button" class="tab-btn active" data-jb="lama">Berikan Target Baru (Level Bab)</button><button type="button" class="tab-btn" data-jb="jumbo">Target Jumbo</button></div>');
+    v.insertAdjacentHTML('beforeend', `<div id="jb-panel" style="display:none">
+      <div id="jb-form" class="card" style="margin-bottom:24px"><h4 style="color:#b5532a"><i class="fas fa-layer-group"></i> Target Jumbo</h4>
+        <div class="jb-grid">
+          <label>Nama Target<input id="jb-nama" type="text" placeholder="Cth: Target Hafalan Pekanan"></label>
+          <label>Jumlah Target Sub Bab<input id="jb-jumlah" type="number" min="1" step="1" placeholder="Cth: 10"></label>
+          <label>Tanggal Mulai<input id="jb-mulai" type="date"></label>
+          <label>Batas Waktu<input id="jb-deadline" type="date"></label>
+          <label style="grid-column:1/-1">Deskripsi / Catatan (opsional)<input id="jb-catatan" type="text"></label>
+          <label>Angkatan<select id="jb-angkatan" onchange="jbPilihAngkatan()"></select></label>
+        </div>
+        <div id="jb-kelas" class="jb-kelas"></div>
+        <p id="jb-ringkas" class="jb-ringkas"></p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" id="jb-btn" class="btn-add" onclick="jbBuat()">Buat Target Jumbo</button><button type="button" class="btn-add" style="background:#999" onclick="jbReset()">Batalkan</button></div>
+      </div><div id="jb-list"></div></div>`);
+    v.querySelector('.jb-tabs').addEventListener('click', e => { const b = e.target.closest('[data-jb]'); if (b) jbTab(b.dataset.jb); });
+    if (typeof firebaseDb !== 'undefined') firebaseDb.ref('targetJumbo').on('value', s => { jbData = s.val() || {}; jbSiap = true; jbRender(); }, () => { jbSiap = 'err'; jbRender(); });
+}
+function jbTab(t) {
+    document.querySelectorAll('.jb-tabs .tab-btn').forEach(b => b.classList.toggle('active', b.dataset.jb === t));
+    document.getElementById('target-lama').style.display = t === 'lama' ? '' : 'none';
+    document.getElementById('jb-panel').style.display = t === 'jumbo' ? '' : 'none';
+    if (t === 'jumbo') { jbReset(); jbRender(); }
+}
+function jbReset() {
+    ['jb-nama', 'jb-jumlah', 'jb-catatan', 'jb-deadline'].forEach(i => document.getElementById(i).value = '');
+    document.getElementById('jb-mulai').value = jbHariIni();
+    const boleh = jbKelasBoleh(), a = [...new Set(boleh.map(jbAngkatan))].sort((x, y) => x.localeCompare(y, 'id', { numeric: true }));
+    document.getElementById('jb-angkatan').innerHTML = a.map(x => `<option value="${_esc(x)}">Angkatan ${_esc(x)}</option>`).join('');
+    jbPilihAngkatan();
+}
+function jbPilihAngkatan() {
+    const ang = _val('jb-angkatan'), boleh = jbKelasBoleh().filter(k => jbAngkatan(k) === ang), box = document.getElementById('jb-kelas');
+    if (!boleh.length) { box.innerHTML = '<p class="dash-empty">Tidak ada kelas yang boleh Anda beri target. (Admin dapat mengisi "Kelas Wali" pada data guru.)</p>'; jbRingkas(); return; }
+    box.innerHTML = `<label class="jb-cb-all"><input type="checkbox" id="jb-semua" onchange="document.querySelectorAll('.jb-cb').forEach(c=>c.checked=this.checked);jbRingkas()"> Semua Kelas dalam Angkatan</label>` +
+        boleh.map(k => `<label class="jb-cb-k"><input type="checkbox" class="jb-cb" value="${_esc(k)}" onchange="jbRingkas()"> ${_esc(k)}</label>`).join('') +
+        `<button type="button" class="btn-detail" onclick="document.querySelectorAll('.jb-cb,#jb-semua').forEach(c=>c.checked=false);jbRingkas()">Batalkan pilihan</button>`;
+    jbRingkas();
+}
+function jbPilih() {
+    const kelas = [...document.querySelectorAll('.jb-cb:checked')].map(c => c.value);
+    return { kelas, siswa: Object.values(databaseSiswa).filter(s => kelas.includes(s.kelas)).map(s => s.nis) };
+}
+function jbRingkas() { const p = jbPilih(); document.getElementById('jb-ringkas').textContent = `Dipilih: ${p.kelas.length} kelas • ${p.siswa.length} siswa akan menerima target`; }
+function jbBuat() {
+    if (jbSaving) return;
+    const nama = _val('jb-nama').trim(), jumlah = Number(_val('jb-jumlah')), mulai = _val('jb-mulai'), deadline = _val('jb-deadline'), p = jbPilih();
+    if (!nama) return alert('Nama Target wajib diisi!');
+    if (!Number.isInteger(jumlah) || jumlah < 1) return alert('Jumlah Target Sub Bab harus bilangan bulat positif!');
+    if (!mulai || !deadline) return alert('Tanggal Mulai dan Batas Waktu wajib diisi!');
+    if (deadline < mulai) return alert('Batas Waktu tidak boleh lebih awal dari Tanggal Mulai!');
+    if (!p.kelas.length) return alert('Pilih minimal satu kelas!');
+    if (!p.siswa.length) return alert('Tidak ada siswa pada kelas yang dipilih!');
+    if (Object.values(jbData).some(t => t.status !== 'dibatalkan' && t.nama.toLowerCase() === nama.toLowerCase() && t.deadline === deadline && p.kelas.some(k => (t.kelas || []).includes(k)))) return alert('Target serupa (nama & batas waktu sama untuk kelas ini) sudah ada.');
+    if (typeof firebaseDb === 'undefined') return alert('Firebase tidak tersedia. Target tidak dapat disimpan.');
+    if (!confirm(`Konfirmasi Target Jumbo\n\nNama: ${nama}\nAngkatan: ${_val('jb-angkatan')}\nKelas: ${p.kelas.join(', ')}\nPenerima: ${p.siswa.length} siswa\nTarget: ${jumlah} Sub Bab per siswa\nMulai: ${jbFmt(mulai)}\nBatas waktu: ${jbFmt(deadline)}\n\nLanjutkan?`)) return;
+    jbSaving = true; const btn = document.getElementById('jb-btn'); btn.disabled = true; btn.textContent = 'Menyimpan...';
+    const id = 'j' + Date.now(), obj = { id, nama, catatan: _val('jb-catatan').trim(), jumlah, mulai, deadline, angkatan: _val('jb-angkatan'), kelas: p.kelas, penerima: p.siswa, status: 'aktif', dibuatOleh: _namaGuruAktif() || localStorage.getItem('guruAktif') || '-', dibuatPada: Date.now() };
+    firebaseDb.ref('targetJumbo/' + id).set(obj).then(() => {
+        alert(`Target Jumbo berhasil dibuat untuk ${p.kelas.length} kelas dan ${p.siswa.length} siswa.`);
+        if (typeof catatAktivitasGuru === 'function') catatAktivitasGuru(`Membuat Target Jumbo "${nama}" untuk ${p.siswa.length} siswa`);
+        jbReset();
+    }).catch(() => alert('Gagal menyimpan Target Jumbo. Tidak ada data yang tersimpan, silakan coba lagi.'))
+      .finally(() => { jbSaving = false; btn.disabled = false; btn.textContent = 'Buat Target Jumbo'; });
+}
+function jbRender() {
+    const box = document.getElementById('jb-list'); if (!box || document.getElementById('jb-panel').style.display === 'none') return;
+    document.getElementById('jb-form').style.display = jbDetail ? 'none' : '';
+    if (jbSiap === 'err') { box.innerHTML = '<p class="dash-empty" style="color:#c0392b">Gagal memuat Target Jumbo. Periksa koneksi.</p>'; return; }
+    if (!jbSiap) { box.innerHTML = '<p class="dash-empty"><i class="fas fa-spinner fa-spin"></i> Memuat...</p>'; return; }
+    if (jbDetail && jbData[jbDetail]) return jbRenderDetail();
+    jbDetail = null; document.getElementById('jb-form').style.display = '';
+    const list = Object.values(jbData).sort((a, b) => b.dibuatPada - a.dibuatPada).map(t => ({ t, h: jbHitung(t) })).filter(x => x.h.rows.length);
+    if (!list.length) { box.innerHTML = '<p class="dash-empty"><i class="fas fa-inbox"></i> Belum ada Target Jumbo.</p>'; return; }
+    box.innerHTML = '<div class="jb-cards">' + list.map(({ t, h }) => {
+        const tot = h.rows.length, pct = tot ? Math.round(h.Selesai / tot * 100) : 0, bt = t.status === 'dibatalkan';
+        return `<div class="card jb-card"><h4 style="text-transform:none;letter-spacing:0;font-size:16px;color:#2f2723">${_esc(t.nama)} ${bt ? jbBadge('Dibatalkan') : ''}</h4>
+        <small>${t.catatan ? _esc(t.catatan) + '<br>' : ''}Angkatan ${_esc(t.angkatan)} • Kelas: ${_esc((t.kelas || []).join(', '))}<br>${tot} siswa • ${t.jumlah} Sub Bab/siswa • ${jbFmt(t.mulai)} s.d. ${jbFmt(t.deadline)}</small>
+        <div class="jb-stat"><span>Selesai <b>${h.Selesai}</b></span><span>Proses <b>${h['Dalam Proses']}</b></span><span>Belum <b>${h['Belum Dimulai']}</b></span><span>Terlambat <b>${h.Terlambat}</b></span></div>
+        ${jbBar(pct)}<small>${pct}% selesai</small>
+        <div style="margin-top:10px;display:flex;gap:8px"><button type="button" class="btn-detail" onclick="jbDetail='${t.id}';jbRender()">Detail</button>${bt ? '' : `<button type="button" class="btn-detail" style="color:#c0392b" onclick="jbBatalTarget('${t.id}')">Batalkan Target</button>`}</div></div>`;
+    }).join('') + '</div>';
+}
+function jbBatalTarget(id) {
+    if (!confirm('Batalkan target ini? Riwayat setoran siswa tidak dihapus, tetapi target ditandai dibatalkan.')) return;
+    if (!verifikasiPasswordAdmin('membatalkan Target Jumbo')) return;
+    firebaseDb.ref('targetJumbo/' + id).update({ status: 'dibatalkan', dibatalkanOleh: _namaGuruAktif() || '-', dibatalkanPada: Date.now() }).catch(() => alert('Gagal membatalkan target.'));
+}
+function jbRenderDetail() {
+    const t = jbData[jbDetail], h = jbHitung(t), kl = [...new Set(h.rows.map(r => r.kelas))].sort((a, b) => a.localeCompare(b, 'id', { numeric: true }));
+    document.getElementById('jb-list').innerHTML = `<button type="button" class="btn-back" onclick="jbDetail=null;jbRender()">← Kembali ke Daftar Target Jumbo</button>
+      <div class="card"><h4 style="text-transform:none;letter-spacing:0;font-size:17px;color:#2f2723">${_esc(t.nama)}</h4><small>${t.jumlah} Sub Bab/siswa • ${jbFmt(t.mulai)} s.d. ${jbFmt(t.deadline)} • Dibuat oleh ${_esc(t.dibuatOleh)}</small>
+      <div class="dash-filters" style="margin:14px 0"><input id="jbd-cari" class="dash-sel" placeholder="Cari nama siswa..." oninput="jbDetailTabel()">
+        <select id="jbd-kelas" class="dash-sel" onchange="jbDetailTabel()"><option value="">Semua Kelas</option>${kl.map(k => `<option>${_esc(k)}</option>`).join('')}</select>
+        <select id="jbd-status" class="dash-sel" onchange="jbDetailTabel()"><option value="">Semua Status</option><option>Selesai</option><option>Dalam Proses</option><option>Belum Dimulai</option><option>Terlambat</option></select>
+        <select id="jbd-urut" class="dash-sel" onchange="jbDetailTabel()"><option value="nama">Urut Nama</option><option value="progres">Urut Progres</option><option value="status">Urut Status</option></select></div>
+      <div id="jbd-tabel"></div></div>`;
+    jbDetailTabel();
+}
+function jbDetailTabel() {
+    const t = jbData[jbDetail], el = document.getElementById('jbd-tabel'); if (!t || !el) return;
+    const q = _val('jbd-cari').toLowerCase(), k = _val('jbd-kelas'), s = _val('jbd-status'), u = _val('jbd-urut'), o = ['Terlambat', 'Belum Dimulai', 'Dalam Proses', 'Selesai'];
+    const rows = jbHitung(t).rows.filter(r => (!q || r.nama.toLowerCase().includes(q)) && (!k || r.kelas === k) && (!s || r.st === s))
+        .sort((a, b) => u === 'progres' ? b.n - a.n : u === 'status' ? o.indexOf(a.st) - o.indexOf(b.st) : a.nama.localeCompare(b.nama, 'id'));
+    el.innerHTML = dashTabel(['Nama', 'Kelas', 'Progres', '', 'Status', 'Selesai Pada'], rows.map(r => [`<b>${_esc(r.nama)}</b>`, _esc(r.kelas), `${r.n}/${t.jumlah} Sub Bab`, jbBar(Math.round(r.n / t.jumlah * 100)), jbBadge(r.st), r.tSel ? new Date(r.tSel).toLocaleDateString('id-ID') : '-']), 'Tidak ada siswa yang cocok.');
+}
+const _refreshJb = refreshDashboardBaru;
+refreshDashboardBaru = function () { _refreshJb(); if (jbSiap === true) { jbRender(); if (jbDetail) jbDetailTabel(); } };
+jbPasangUI();
