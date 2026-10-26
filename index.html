@@ -87,6 +87,11 @@
     <main class="main-content">
         <header>
             <h2 id="page-title">Dashboard</h2>
+            <nav id="dash-nav" class="dash-nav" aria-label="Pilihan dashboard">
+                <button type="button" class="dash-tab active" data-dash="dashboard">Dashboard</button>
+                <button type="button" class="dash-tab" data-dash="dashboard-angkatan">Dashboard Angkatan</button>
+                <button type="button" class="dash-tab" data-dash="dashboard-kelas">Dashboard Kelas</button>
+            </nav>
             <div class="user-info" style="display: flex; align-items: center;">
                 <span>Admin</span>
                 <i class="fas fa-user-circle"></i>
@@ -254,6 +259,35 @@
             </section>
 
       
+
+<!-- [FITUR BARU] DASHBOARD ANGKATAN (D1) -->
+<section id="dashboard-angkatan" class="page-section">
+    <div class="dash-toolbar">
+        <h3>Dashboard Angkatan</h3>
+        <div class="dash-filters">
+            <input type="text" id="d1-cari" placeholder="Cari nama siswa/guru..." oninput="renderDashAngkatan()" class="dash-sel">
+            <select id="d1-kelas" onchange="renderDashAngkatan()" class="dash-sel"><option value="Semua">Semua Kelas</option></select>
+            <select id="d1-periode" onchange="renderDashAngkatan()" class="dash-sel"><option value="hari">Hari ini</option><option value="minggu" selected>7 hari terakhir</option><option value="bulan">Bulan ini</option><option value="semua">Keseluruhan</option></select>
+        </div>
+    </div>
+    <div id="d1-sum" class="cards-container dash-sum"></div>
+    <div class="card dash-box"><h4><i class="fas fa-fire" style="color:#e74c3c"></i> Kelas Teraktif</h4><div id="d1-kelas-isi"></div></div>
+    <div class="card dash-box"><h4><i class="fas fa-user-graduate" style="color:#c9560f"></i> Siswa Teraktif <small>(20 teratas)</small></h4><div id="d1-siswa-isi"></div></div>
+    <div class="card dash-box"><h4><i class="fas fa-chalkboard-teacher" style="color:#2980b9"></i> Guru Teraktif <small>(20 teratas)</small></h4><div id="d1-guru-isi"></div></div>
+</section>
+
+<!-- [FITUR BARU] DASHBOARD KELAS (D2) - WALI KELAS -->
+<section id="dashboard-kelas" class="page-section">
+    <div class="dash-toolbar">
+        <h3>Dashboard Kelas</h3>
+        <div class="dash-filters">
+            <select id="d2-kelas" onchange="renderDashKelas()" class="dash-sel"></select>
+            <select id="d2-periode" onchange="renderDashKelas()" class="dash-sel"><option value="hari">Hari ini</option><option value="minggu" selected>7 hari terakhir</option><option value="bulan">Bulan ini</option><option value="semua">Keseluruhan</option></select>
+        </div>
+    </div>
+    <div id="d2-sum" class="cards-container dash-sum"></div>
+    <div class="card dash-box"><h4><i class="fas fa-trophy" style="color:#f39c12"></i> Siswa Teraktif di Kelas</h4><div id="d2-isi"></div></div>
+</section>
 
 <!-- ================= DAFTAR SISWA ================= -->
 <section id="data-siswa" class="page-section">
