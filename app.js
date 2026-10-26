@@ -1,76 +1,55 @@
 // ==========================================
-// 1. FUNGSI LOGIN & PENCARIAN NAMA (SUPER AMAN + BYPASS ADMIN)
+// 1. FUNGSI LOGIN & PENCARIAN NAMA
 // ==========================================
-const PASSWORD_WEB_BERSAMA = "ijhad2026";
+let daftarLoginGuru = [];
+let authDaftarLoginSiap = false;
+let authLoginBerjalan = false;
+
+const authNormalisasiNama = nama => String(nama || '').trim().replace(/\s+/g, ' ').toLowerCase();
+
+function authPerbaruiDaftarLogin(data) {
+    daftarLoginGuru = Object.values(data || {})
+        .filter(a => a && typeof a.nama === 'string' && typeof a.email === 'string')
+        .map(a => ({ nama: a.nama.trim(), email: a.email.trim() }))
+        .filter(a => a.nama && a.email)
+        .sort((a, b) => a.nama.localeCompare(b.nama, 'id'));
+    authDaftarLoginSiap = true;
+}
 
 function filterNamaGuruLogin() {
     const input = document.getElementById("input-nama-guru-login");
-    const filter = input ? input.value.toLowerCase() : "";
     const listContainer = document.getElementById("autocomplete-list-login");
+    if (!input || !listContainer) return;
 
-    if (!listContainer) return;
+    const filter = authNormalisasiNama(input.value);
     listContainer.innerHTML = "";
 
-    let sumberDataGuru = [];
-    try { sumberDataGuru = JSON.parse(localStorage.getItem('daftarGuru')) || []; } catch (e) { }
-    if (typeof daftarGuru !== 'undefined' && daftarGuru.length > 0) { sumberDataGuru = daftarGuru; }
-
-    let adaHasil = false;
-
-    // 1. Tampilkan Daftar Guru (Jika Ada)
-    if (sumberDataGuru.length > 0) {
-        sumberDataGuru.forEach(guru => {
-            if (!filter || (guru.nama && guru.nama.toLowerCase().includes(filter))) {
-                adaHasil = true;
-                const div = document.createElement("div");
-                div.style.padding = "10px 15px";
-                div.style.cursor = "pointer";
-                div.style.borderBottom = "1px solid #f2e7da";
-                div.style.color = "#3a2f2a";
-                div.style.fontWeight = "bold";
-                div.innerHTML = guru.nama;
-
-                div.onmouseover = function () { this.style.background = "#faf5ec"; };
-                div.onmouseout = function () { this.style.background = "white"; };
-
-                // PERBAIKAN: Gunakan onmousedown agar nama 100% masuk saat diklik
-                div.onmousedown = function (e) {
-                    e.preventDefault();
-                    input.value = guru.nama;
-                    listContainer.style.display = "none";
-                };
-
-                listContainer.appendChild(div);
-            }
-        });
+    if (!authDaftarLoginSiap) {
+        listContainer.textContent = "Memuat daftar nama...";
+        listContainer.style.display = "block";
+        return;
     }
 
-    // 2. SELALU Tampilkan Opsi Admin (Sebagai Pintu Darurat)
-    if (!filter || "admin".includes(filter)) {
-        adaHasil = true;
-        const divAdmin = document.createElement("div");
-        divAdmin.style.padding = "10px 15px";
-        divAdmin.style.cursor = "pointer";
-        divAdmin.style.borderBottom = "1px solid #f2e7da";
-        divAdmin.style.color = "#b5532a";
-        divAdmin.style.fontWeight = "bold";
-        divAdmin.innerHTML = "⭐ Admin Aplikasi";
-
-        divAdmin.onmouseover = function () { this.style.background = "#faf5ec"; };
-        divAdmin.onmouseout = function () { this.style.background = "white"; };
-
-        divAdmin.onmousedown = function (e) {
+    const hasil = daftarLoginGuru.filter(guru => !filter || authNormalisasiNama(guru.nama).includes(filter));
+    hasil.forEach(guru => {
+        const div = document.createElement("div");
+        div.style.cssText = "padding:10px 15px;cursor:pointer;border-bottom:1px solid #f2e7da;color:#3a2f2a;font-weight:bold;";
+        div.textContent = guru.nama;
+        div.onmouseover = function () { this.style.background = "#faf5ec"; };
+        div.onmouseout = function () { this.style.background = "white"; };
+        div.onmousedown = function (e) {
             e.preventDefault();
-            input.value = "Admin Aplikasi";
+            input.value = guru.nama;
             listContainer.style.display = "none";
         };
-        listContainer.appendChild(divAdmin);
-    }
+        listContainer.appendChild(div);
+    });
 
-    if (!adaHasil) {
-        listContainer.innerHTML = `<div style="padding: 10px 15px; color: #c0392b; font-style: italic; font-size: 13px;">Nama tidak ditemukan...</div>`;
+    if (!hasil.length) {
+        listContainer.textContent = "Nama tidak ditemukan...";
+        listContainer.style.color = "#c0392b";
+        listContainer.style.fontStyle = "italic";
     }
-
     listContainer.style.display = "block";
 }
 
@@ -10074,6 +10053,7 @@ function simpanProgresSiswaAktif() {
 
     // Kembalikan objek yang sudah diperbarui dengan aman ke database utama
     databaseSiswa[nisAktif].progressBelajar = progresSiswa;
+    if (typeof jbResetCache === 'function') jbResetCache();
 
     // 3. Simpan ke LocalStorage & Firebase
     try {
@@ -10260,6 +10240,7 @@ function loadDataDariStorage() {
 }
 
 function simpanKeStorage() {
+    if (typeof jbResetCache === 'function') jbResetCache();
     try {
         localStorage.setItem('databaseSiswa', JSON.stringify(databaseSiswa));
     } catch (err) {
@@ -11732,20 +11713,7 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
                     targetDateObj.setHours(0, 0, 0, 0);
 
                     // Cek progress realtime siswa untuk target ini (Level 4)
-                    let progresSudahSelesai = false;
-                    if (typeof isBabSelesai === 'function') {
-                        // Untuk mengecek bab siswa lain (bukan siswa aktif), kita perlu Set sementara dari data tersimpan
-                        const progresSiswaIni = siswa.progressBelajar || {};
-                        const dataKategori = progresSiswaIni[target.program];
-                        const dataPelajaran = dataKategori ? dataKategori[target.pelajaran] : null;
-                        const dataBab = dataPelajaran ? dataPelajaran[target.bab] : null;
-
-                        if (dataBab) {
-                            const jmlSubBabTarget = getJumlahSubBab(target.pelajaran, target.bab);
-                            const jumlahTercentang = Array.isArray(dataBab) ? dataBab.length : 0;
-                            progresSudahSelesai = jumlahTercentang >= jmlSubBabTarget;
-                        }
-                    }
+                    const progresSudahSelesai = isTargetSelesaiRealtime(siswa, target);
 
                     if (progresSudahSelesai) {
                         statusDinamis = "Selesai";
@@ -11977,6 +11945,31 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
         return `${yyyy}-${mm}-${dd}`;
     }
 
+    // Centang ulang sub-bab yang sama tidak boleh dihitung berkali-kali,
+    // dan setoran yang sudah dibatalkan tidak boleh masuk rekap harian.
+    function kunciSetoranLog(log) {
+        return [log.nis, log.program, log.pelajaran, log.bab, log.subbab].join('|');
+    }
+
+    function ambilSetoranHariIni(kelasTerpilih) {
+        const todayKey = getTanggalKeyHariIni();
+        const kelas = String(kelasTerpilih || "Semua").trim().toLowerCase();
+        const hasil = new Map();
+
+        (Array.isArray(recentActivityLog) ? recentActivityLog : []).forEach(log => {
+            if (!log || log.tanggalKey !== todayKey) return;
+            if (kelas !== "semua" && String(log.kelas || "").trim().toLowerCase() !== kelas) return;
+
+            const kunci = kunciSetoranLog(log);
+            if (hasil.has(kunci)) return;
+            if (typeof jbSetoranAktifSet === 'function' && !jbSetoranAktifSet(log.nis).has(kunci)) return;
+
+            hasil.set(kunci, log);
+        });
+
+        return [...hasil.values()];
+    }
+
     // --- [BARU] Muat log aktivitas dari localStorage (dipanggil sekali saat DOMContentLoaded) ---
     function muatAktivitasDariStorage() {
         try {
@@ -12036,7 +12029,7 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
         const listEl = document.querySelector('.activity-box .activity-list');
         if (!listEl) return;
 
-        const tigaTerbaru = recentActivityLog.slice(0, 3);
+        const tigaTerbaru = ambilSetoranHariIni("Semua").slice(0, 3);
 
         if (tigaTerbaru.length === 0) {
             listEl.innerHTML = '<li>Belum ada aktivitas checklist hari ini.</li>';
@@ -12179,11 +12172,9 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
         const selectKelas = document.getElementById('filter-kelas-belum');
         const kelasTerpilih = selectKelas ? selectKelas.value : "Semua";
 
-        const todayKey = getTanggalKeyHariIni();
-
-        // Kumpulan NIS siswa yang SUDAH punya minimal 1 checklist hari ini
+        // Kumpulan NIS siswa yang SUDAH punya minimal 1 setoran aktif hari ini
         const nisSudahAktivitasHariIni = new Set(
-            recentActivityLog.filter(a => a.tanggalKey === todayKey).map(a => a.nis)
+            ambilSetoranHariIni("Semua").map(a => a.nis)
         );
 
         // Filter daftar siswa (Cek yang belum aktivitas DAN cocokkan kelasnya)
@@ -12223,20 +12214,14 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
 
     // --- [BARU] Hitung & urutkan siswa teraktif dengan FILTER KELAS ---
     function hitungSiswaTeraktifHariIni(kelasTerpilih) {
-        const todayKey = getTanggalKeyHariIni();
         const jumlahPerSiswa = {};
 
-        recentActivityLog
-            .filter(a => a.tanggalKey === todayKey)
-            .forEach(a => {
-                // Cek filter kelas
-                if (kelasTerpilih === "Semua" || a.kelas === kelasTerpilih) {
-                    if (!jumlahPerSiswa[a.nis]) {
-                        jumlahPerSiswa[a.nis] = { nis: a.nis, nama: a.nama, kelas: a.kelas, jumlah: 0 };
-                    }
-                    jumlahPerSiswa[a.nis].jumlah += 1;
-                }
-            });
+        ambilSetoranHariIni(kelasTerpilih).forEach(a => {
+            if (!jumlahPerSiswa[a.nis]) {
+                jumlahPerSiswa[a.nis] = { nis: a.nis, nama: a.nama, kelas: a.kelas, jumlah: 0 };
+            }
+            jumlahPerSiswa[a.nis].jumlah += 1;
+        });
 
         return Object.values(jumlahPerSiswa)
             .sort((a, b) => {
@@ -12444,6 +12429,7 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
                 }
 
                 Object.assign(databaseSiswa, snapshot.val());
+                if (typeof jbResetCache === 'function') jbResetCache();
                 localStorage.setItem('databaseSiswa', JSON.stringify(databaseSiswa));
                 if (halamanAktif === "data-siswa") renderTabelSiswa();
                 if (halamanAktif === "dashboard") refreshDashboardBaru();
@@ -12455,6 +12441,7 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
                 const dataSiswaBaru = snapshot.val();
 
                 databaseSiswa[nis] = dataSiswaBaru;
+                if (typeof jbResetCache === 'function') jbResetCache();
                 localStorage.setItem('databaseSiswa', JSON.stringify(databaseSiswa));
 
                 // Update tampilan tergantung halaman yang sedang dibuka guru
@@ -12471,7 +12458,7 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
                     const progresTersimpan = dataSiswaBaru.progressBelajar || {};
                     DAFTAR_KATEGORI.forEach(kategori => {
                         if (programState[kategori]) {
-                            programState[kategori].completed = ubahCompletedKeSet(progresTersimpan[kategori]);
+                            programState[kategori].completed = ubahCompletedKeSet(progresTersimpan[kategori], kategori);
                         }
                     });
                     updateStatistik();
@@ -12494,6 +12481,7 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
                 const nis = snapshot.key;
                 if (!databaseSiswa[nis]) {
                     databaseSiswa[nis] = snapshot.val();
+                    if (typeof jbResetCache === 'function') jbResetCache();
                     if (halamanAktif === "data-siswa") renderTabelSiswa();
                 }
             });
@@ -12503,6 +12491,7 @@ function buatTabelStatistikPelajaranKelas(dataPerPelajaran) {
                 const nis = snapshot.key;
                 if (databaseSiswa[nis]) {
                     delete databaseSiswa[nis];
+                    if (typeof jbResetCache === 'function') jbResetCache();
                     localStorage.setItem('databaseSiswa', JSON.stringify(databaseSiswa));
 
                     // Update tabel jika guru sedang membuka halaman data siswa
@@ -13219,61 +13208,6 @@ function hapusGuru(index) {
         }
     });
 
-    // ==========================================
-    // PASSWORD BERSAMA WEB
-    // ==========================================
-    // const PASSWORD_WEB_BERSAMA = "ijhad2026";
-
-    // ==========================================
-    // FITUR PENCARIAN NAMA GURU SAAT LOGIN
-    // ==========================================
-    function filterNamaGuruLogin() {
-        const input = document.getElementById("input-nama-guru-login");
-        const filter = input.value.toLowerCase();
-        const listContainer = document.getElementById("autocomplete-list-login");
-
-        listContainer.innerHTML = ""; // Kosongkan daftar sebelumnya
-
-        // Sembunyikan jika input kosong
-        if (!filter) {
-            listContainer.style.display = "none";
-            return;
-        }
-
-        let adaHasil = false;
-
-        // Cari nama yang cocok di daftarGuru
-        if (typeof daftarGuru !== 'undefined') {
-            daftarGuru.forEach(guru => {
-                if (guru.nama && guru.nama.toLowerCase().includes(filter)) {
-                    adaHasil = true;
-                    const div = document.createElement("div");
-                    div.style.padding = "10px 15px";
-                    div.style.cursor = "pointer";
-                    div.style.borderBottom = "1px solid #f2e7da";
-                    div.style.color = "#3a2f2a";
-                    div.style.fontWeight = "bold";
-                    div.innerHTML = guru.nama;
-
-                    // Efek hover
-                    div.onmouseover = function () { this.style.background = "#faf5ec"; };
-                    div.onmouseout = function () { this.style.background = "white"; };
-
-                    // Saat nama diklik
-                    div.onclick = function () {
-                        input.value = guru.nama; // Masukkan nama ke kolom input
-                        listContainer.style.display = "none"; // Tutup kotak pilihan
-                    };
-
-                    listContainer.appendChild(div);
-                }
-            });
-        }
-
-        // Tampilkan kotak pilihan jika ada hasil
-        listContainer.style.display = adaHasil ? "block" : "none";
-    }
-
     // Menutup kotak pencarian jika user klik di luar kotak
     document.addEventListener("click", function (e) {
         const input = document.getElementById("input-nama-guru-login");
@@ -13284,54 +13218,88 @@ function hapusGuru(index) {
     });
 
 
-    // ==========================================
-// FUNGSI LOGIN / PASSWORD BERSAMA WEB (REVISI)
-// ==========================================
-function cekPasswordWeb() {
+function authPesanError(error) {
+    const kode = error && error.code;
+    if (kode === 'auth/invalid-credential' || kode === 'auth/wrong-password' || kode === 'auth/user-not-found') {
+        return "Nama atau password tidak sesuai. Silakan coba lagi.";
+    }
+    if (kode === 'auth/too-many-requests') return "Terlalu banyak percobaan login. Silakan tunggu beberapa saat.";
+    if (kode === 'auth/network-request-failed') return "Koneksi ke server gagal. Periksa jaringan Anda.";
+    if (kode === 'auth/operation-not-allowed') return "Metode login email/password belum diaktifkan.";
+    return "Login gagal. Silakan coba lagi.";
+}
+
+function authSetLoginSibuk(sibuk) {
+    authLoginBerjalan = sibuk;
+    const tombol = document.getElementById('tombol-login-web');
+    if (!tombol) return;
+    tombol.disabled = sibuk;
+    tombol.textContent = sibuk ? "Membuka..." : "Buka Aplikasi";
+}
+
+function authTampilkanLogin() {
+    sessionStorage.removeItem('isWebUnlocked');
+    sessionStorage.removeItem('guruAktif');
+    sessionStorage.removeItem('guruAktifUid');
+    localStorage.removeItem('guruAktif');
+
+    const userInfo = document.querySelector(".user-info span");
+    if (userInfo) userInfo.textContent = "Pengguna";
+
+    const loginScreen = document.getElementById('login-screen');
+    if (loginScreen) loginScreen.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    authSetLoginSibuk(false);
+}
+
+function authTerapkanSesi(user, akun) {
+    if (!firebaseAuth.currentUser || firebaseAuth.currentUser.uid !== user.uid) return;
+    const namaResmi = akun.nama || user.displayName || '';
+    const pesanError = document.getElementById('pesan-error-login');
+    if (pesanError) pesanError.style.display = 'none';
+
+    sessionStorage.setItem('isWebUnlocked', 'true');
+    sessionStorage.setItem('guruAktif', namaResmi);
+    sessionStorage.setItem('guruAktifUid', user.uid);
+    localStorage.setItem('guruAktif', namaResmi);
+
+    const userInfo = document.querySelector(".user-info span");
+    if (userInfo) userInfo.textContent = namaResmi;
+
+    const loginScreen = document.getElementById('login-screen');
+    if (loginScreen) loginScreen.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    authSetLoginSibuk(false);
+}
+
+async function cekPasswordWeb() {
+    if (authLoginBerjalan) return;
+
     const inputEl = document.getElementById('input-password-web');
     const inputNamaEl = document.getElementById('input-nama-guru-login');
-    const pesanError = document.getElementById('pesan-error-login');
+    if (!inputEl || !inputNamaEl) return;
 
-    if (!inputEl) return;
-
-    const input = inputEl.value.trim();
-    const namaGuru = inputNamaEl ? inputNamaEl.value.trim() : "";
-
-    // 1. BLOKIR JIKA NAMA KOSONG
-    if (!namaGuru || namaGuru === "") {
+    const password = inputEl.value;
+    const namaGuru = inputNamaEl.value.trim();
+    if (!namaGuru) {
         tampilkanErrorLogin("Akses ditolak! Silakan cari & pilih nama Anda terlebih dahulu.");
         return;
     }
 
-    // 2. BLOKIR JIKA NAMA TIDAK ADA DI DATABASE GURU (TIDAK BOLEH NGETIK ASAL)
-    const cekGuruValid = daftarGuru.find(g => g.nama.toLowerCase() === namaGuru.toLowerCase());
-    if (!cekGuruValid) {
-        tampilkanErrorLogin("Nama tidak ditemukan di database! Pastikan memilih dari hasil pencarian.");
+    const akun = daftarLoginGuru.find(g => authNormalisasiNama(g.nama) === authNormalisasiNama(namaGuru));
+    if (!akun) {
+        tampilkanErrorLogin("Nama tidak ditemukan di daftar akun. Pastikan memilih dari hasil pencarian.");
         return;
     }
 
-    // 3. PENGECEKAN PASSWORD
-    if (input === PASSWORD_WEB_BERSAMA) {
-        // Gunakan nama asli dari database
-        const namaResmi = cekGuruValid.nama;
-
-        sessionStorage.setItem('isWebUnlocked', 'true');
-        sessionStorage.setItem('guruAktif', namaResmi);
-        
-        // Simpan ke localStorage agar nama tidak hilang saat di-refresh
-        localStorage.setItem('guruAktif', namaResmi); 
-
-        const userInfo = document.querySelector(".user-info span");
-        if (userInfo) userInfo.textContent = namaResmi;
-
-        const loginScreen = document.getElementById('login-screen');
-        if (loginScreen) loginScreen.style.display = 'none';
-        document.body.style.overflow = 'auto';
-
-        // Perekam aktivitas "Melakukan Login" SUDAH DIHAPUS DARI SINI
-        
-    } else {
-        tampilkanErrorLogin("Password salah! Silakan coba lagi.");
+    const pesanError = document.getElementById('pesan-error-login');
+    if (pesanError) pesanError.style.display = 'none';
+    authSetLoginSibuk(true);
+    try {
+        await firebaseAuth.signInWithEmailAndPassword(akun.email, password);
+    } catch (error) {
+        tampilkanErrorLogin(authPesanError(error));
+        authSetLoginSibuk(false);
     }
 }
 
@@ -13347,30 +13315,43 @@ function cekPasswordWeb() {
         }
     }
 
-    // --- INISIALISASI PENGECEKAN LOGIN WEB SAAT HALAMAN DIMUAT ---
+    // --- INISIALISASI FIREBASE AUTH SAAT HALAMAN DIMUAT ---
     document.addEventListener("DOMContentLoaded", () => {
-        // Siapkan opsi nama di dropdown login
-        if (typeof siapkanDropdownLogin === "function") {
-            siapkanDropdownLogin();
-        }
+        firebaseDb.ref('loginGuru').on('value', snapshot => {
+            authPerbaruiDaftarLogin(snapshot.val());
+            const input = document.getElementById('input-nama-guru-login');
+            if (input && document.activeElement === input) filterNamaGuruLogin();
+        }, error => {
+            authDaftarLoginSiap = true;
+            console.error("Gagal memuat daftar akun login:", error);
+        });
 
-        // 1. Pengecekan Sesi Login Web
-        if (sessionStorage.getItem('isWebUnlocked') === 'true') {
-            const loginScreen = document.getElementById('login-screen');
-            if (loginScreen) loginScreen.style.display = 'none';
-            document.body.style.overflow = 'auto';
-
-            // Kembalikan nama guru di UI jika sudah login
-            const namaGuru = sessionStorage.getItem('guruAktif');
-            const userInfo = document.querySelector(".user-info span");
-            if (namaGuru && userInfo) {
-                userInfo.textContent = namaGuru;
+        firebaseAuth.onAuthStateChanged(async user => {
+            if (!user) {
+                authTampilkanLogin();
+                return;
             }
-        } else {
-            document.body.style.overflow = 'hidden'; // Matikan scroll saat di layar login
-        }
 
-        // 2. Fitur agar bisa login dengan menekan tombol "Enter" di keyboard
+            try {
+                if (!authDaftarLoginSiap) {
+                    const snapshot = await firebaseDb.ref('loginGuru').once('value');
+                    authPerbaruiDaftarLogin(snapshot.val());
+                }
+                const email = String(user.email || '').toLowerCase();
+                const akun = daftarLoginGuru.find(g => g.email.toLowerCase() === email);
+                if (!akun) {
+                    await firebaseAuth.signOut();
+                    tampilkanErrorLogin("Akun ini belum terhubung ke data guru. Hubungi admin.");
+                    return;
+                }
+                authTerapkanSesi(user, akun);
+            } catch (error) {
+                console.error("Gagal memulihkan sesi login:", error);
+                authTampilkanLogin();
+                tampilkanErrorLogin("Sesi login tidak dapat dipulihkan. Silakan login kembali.");
+            }
+        });
+
         const inputPassWeb = document.getElementById('input-password-web');
         if (inputPassWeb) {
             inputPassWeb.addEventListener("keypress", function (event) {
@@ -13385,34 +13366,20 @@ function cekPasswordWeb() {
     // ==========================================
 // FUNGSI LOGOUT SISTEM
 // ==========================================
-function logoutWeb() {
-    // 1. Konfirmasi dulu agar tidak tidak sengaja terklik
+async function logoutWeb() {
     const konfirmasi = confirm("Apakah Anda yakin ingin keluar dari aplikasi?");
     if (!konfirmasi) return;
 
-    // Perekam aktivitas "Melakukan Logout" SUDAH DIHAPUS DARI SINI
-
-    // 2. Hapus data kunci di Session Storage & Local Storage
-    sessionStorage.removeItem('isWebUnlocked');
-    sessionStorage.removeItem('guruAktif');
-    // localStorage.removeItem('guruAktif'); // Opsional, bisa diaktifkan jika ingin nama benar-benar bersih
-
-    // 3. Reset inputan di form login
-    const inputPass = document.getElementById('input-password-web');
-    const inputNama = document.getElementById('input-nama-guru-login');
-    if (inputPass) inputPass.value = "";
-    if (inputNama) inputNama.value = "";
-
-    // 4. Kembalikan nama profil ke awal
-    const userInfo = document.querySelector(".user-info span");
-    if (userInfo) userInfo.textContent = "Pengguna";
-
-    // 5. Tampilkan kembali layar kunci (login screen) dan matikan scroll web
-    const loginScreen = document.getElementById('login-screen');
-    if (loginScreen) {
-        loginScreen.style.display = 'flex'; // Tampilkan layar
+    try {
+        await firebaseAuth.signOut();
+        const inputPass = document.getElementById('input-password-web');
+        const inputNama = document.getElementById('input-nama-guru-login');
+        if (inputPass) inputPass.value = "";
+        if (inputNama) inputNama.value = "";
+    } catch (error) {
+        console.error("Gagal logout:", error);
+        alert("Logout gagal. Silakan coba lagi.");
     }
-    document.body.style.overflow = 'hidden'; // Kunci scroll
 }
 
     /* ==================================================================
@@ -13733,19 +13700,14 @@ function logoutWeb() {
         const daftarKelas = getDaftarKelasUnik();
         daftarKelas.forEach(k => skorKelas[k] = 0);
 
-        const todayKey = getTanggalKeyHariIni();
         let hasData = false;
 
-        if (typeof recentActivityLog !== 'undefined' && Array.isArray(recentActivityLog)) {
-            recentActivityLog.forEach(log => {
-                if (log.tanggalKey === todayKey) {
-                    if (log.kelas) {
-                        skorKelas[log.kelas]++;
-                        hasData = true;
-                    }
-                }
-            });
-        }
+        ambilSetoranHariIni("Semua").forEach(log => {
+            if (log.kelas) {
+                skorKelas[log.kelas]++;
+                hasData = true;
+            }
+        });
 
         let sortedKelas = Object.keys(skorKelas).map(kelas => {
             return { kelas: kelas, skor: skorKelas[kelas] };
@@ -13817,12 +13779,7 @@ function logoutWeb() {
         const container = document.getElementById("container-rekap-harian");
         if (!container) return;
 
-        const todayKey = getTanggalKeyHariIni();
-        let totalSetoranHariIni = 0;
-
-        if (typeof recentActivityLog !== 'undefined' && Array.isArray(recentActivityLog)) {
-            totalSetoranHariIni = recentActivityLog.filter(log => log.tanggalKey === todayKey).length;
-        }
+        const totalSetoranHariIni = ambilSetoranHariIni("Semua").length;
 
         container.innerHTML = `
         <div onclick="bukaModalRekapHarian()" style="background: linear-gradient(135deg, #b5532a, #b52b2b); color: white; padding: 20px; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 10px rgba(90, 60, 30, 0.2); display: flex; justify-content: space-between; align-items: center; transition: 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
@@ -13849,9 +13806,6 @@ function logoutWeb() {
         const selectKelas = document.getElementById("filter-kelas-rekap-harian");
         if (!modal || !tbody) return;
 
-        const todayKey = getTanggalKeyHariIni();
-        let setoranHariIni = (recentActivityLog || []).filter(log => log.tanggalKey === todayKey);
-
         // 1. Ambil dan isi daftar kelas secara mandiri & aman
         if (selectKelas) {
             const currentVal = selectKelas.value || "Semua";
@@ -13870,11 +13824,9 @@ function logoutWeb() {
             selectKelas.value = daftarKelas.includes(currentVal) ? currentVal : "Semua";
         }
 
-        // 2. Filter data berdasarkan kelas yang dipilih
+        // 2. Ambil setoran aktif hari ini (unik) sesuai filter kelas
         const selectedKelas = selectKelas ? selectKelas.value : "Semua";
-        if (selectedKelas !== "Semua") {
-            setoranHariIni = setoranHariIni.filter(log => String(log.kelas || "").trim().toLowerCase() === String(selectedKelas).trim().toLowerCase());
-        }
+        const setoranHariIni = ambilSetoranHariIni(selectedKelas);
 
         let html = "";
 
@@ -13902,7 +13854,7 @@ function logoutWeb() {
         }
 
         tbody.innerHTML = html;
-        modal.style.display = "block";
+        modal.style.display = "flex";
     }
 
     // 3. Fungsi Tutup Modal
@@ -13914,15 +13866,11 @@ function logoutWeb() {
     // 4. Export ke Excel / CSV (Aman tanpa library luar)
     function exportRekapHarianExcel() {
         const todayKey = getTanggalKeyHariIni();
-        let setoranHariIni = (recentActivityLog || []).filter(log => log.tanggalKey === todayKey);
 
         // Ambil status filter kelas yang sedang aktif
         const selectKelas = document.getElementById("filter-kelas-rekap-harian");
         const selectedKelas = selectKelas ? selectKelas.value : "Semua";
-
-        if (selectedKelas !== "Semua") {
-            setoranHariIni = setoranHariIni.filter(log => String(log.kelas).trim().toLowerCase() === String(selectedKelas).trim().toLowerCase());
-        }
+        const setoranHariIni = ambilSetoranHariIni(selectedKelas);
 
         if (setoranHariIni.length === 0) {
             alert("Tidak ada data untuk diexport berdasarkan filter kelas saat ini.");
@@ -15162,10 +15110,13 @@ function jbSiswaKelas(kelasList) {
     return Object.values(databaseSiswa).filter(s => s && s.nis && kelasList.some(k => jbSama(k, s.kelas))).map(s => s.nis);
 }
 function jbKelasTerpilih() {
+    // Hak akses dibaca ulang SAAT INI juga, bukan hanya dari tampilan formulir, supaya pilihan kelas
+    // yang masih tertinggal di DOM (misalnya hak akses guru dicabut) tidak ikut tersimpan.
+    const boleh = jbKelasBoleh(), kunci = k => boleh.find(x => jbSama(x, k));
     const c = jbCakupanAktif();
     if (c === 'angkatan') return jbKelasDalamAngkatan(_val('jb-angkatan'));
-    if (c === 'satu') { const k = _val('jb-satu-kelas'); return k ? [k] : []; }
-    return [...document.querySelectorAll('.jb-cb:checked')].map(x => x.value);
+    if (c === 'satu') { const k = kunci(_val('jb-satu-kelas')); return k ? [k] : []; }
+    return [...new Set([...document.querySelectorAll('.jb-cb:checked')].map(x => x.value).map(kunci).filter(Boolean))];
 }
 function jbPilih() {
     const kelas = jbKelasTerpilih();
@@ -15202,7 +15153,8 @@ function jbBuat() {
     const obj = {
         id, nama, catatan: _val('jb-catatan').trim(), jumlah, mulai, deadline,
         cakupan: p.cakupan, angkatan: p.angkatan || jbAngkatan(p.kelas[0]), kelas: p.kelas,
-        penerima: p.siswa, baseline, status: 'aktif', dibuatOleh: _namaGuruAktif() || localStorage.getItem('guruAktif') || '-', dibuatPada: Date.now()
+        penerima: p.siswa, baseline, status: 'aktif', dibuatOleh: _namaGuruAktif() || localStorage.getItem('guruAktif') || '-',
+        dibuatOlehUid: firebaseAuth.currentUser ? firebaseAuth.currentUser.uid : '', dibuatPada: Date.now()
     };
     firebaseDb.ref('targetJumbo/' + id).set(obj).then(() => {
         alert(`Target Jumbo "${nama}" berhasil dibuat untuk ${p.kelas.length} kelas dan ${p.siswa.length} siswa dalam satu program.`);
